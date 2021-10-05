@@ -193,9 +193,29 @@ class _DataListTable4State extends State<DataListTable4> {
       BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
     }
 
-    void _tapDelete(String s) {
-      _CallYNPopup('Delete ${s}', 'Are you sure you want to delete ${s}?',
-          'Delete', 'Cancel', _Delete, _CloseYNPopup, s, true);
+    void _tapDelete(MainStrucTableTap4 s) {
+      DeleteDataTable4buffer.number = s.number;
+      DeleteDataTable4buffer.field01 = s.field01;
+      DeleteDataTable4buffer.field02 = s.field02;
+      DeleteDataTable4buffer.field03 = s.field03;
+      DeleteDataTable4buffer.field04 = s.field04;
+      DeleteDataTable4buffer.field05 = s.field05;
+      DeleteDataTable4buffer.field06 = s.field06;
+      DeleteDataTable4buffer.field07 = s.field07;
+      DeleteDataTable4buffer.field08 = s.field08;
+      DeleteDataTable4buffer.field09 = s.field09;
+      DeleteDataTable4buffer.field10 = s.field10;
+      DeleteDataTable4buffer.field11 = s.field11;
+
+      _CallYNPopup(
+          'Delete ${s.number}',
+          'Are you sure you want to delete ${s.number}?',
+          'Delete',
+          'Cancel',
+          _Delete,
+          _CloseYNPopup,
+          s.number,
+          true);
     }
 
     //all cells data for this page.
@@ -359,6 +379,7 @@ DataRow _getDataRow(
 
   return DataRow(
       cells: [
+        _getDataCell_Label(number, nDataColumnWidth),
         _getDataCell_Label(field01, nDataColumnWidth),
         _getDataCell_Label(field02, nDataColumnWidth),
         _getDataCell_Label(field03, nDataColumnWidth),
@@ -370,7 +391,7 @@ DataRow _getDataRow(
         _getDataCell_Label(field09, nDataColumnWidth),
         _getDataCell_Label(field10, nDataColumnWidth),
         _getDataCell_Label(field11, nDataColumnWidth),
-        _getDataCell_Label(field12, nDataColumnWidth),
+        // _getDataCell_Label(field12, nDataColumnWidth),
         _getDataCell_Icon(number, funcEdit, funcDelete, nDataColumnWidthIcon,
             nDataWidthIcon, nMarginToMakeIconSmaller, getData),
       ],
@@ -426,7 +447,7 @@ DataCell _getDataCell_Icon(
   }
 
   void _tapDelete() {
-    funcDelete(sId);
+    funcDelete(GetData);
   }
 
   return DataCell(

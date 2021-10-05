@@ -37,3 +37,21 @@ MainStrucTableTap4 EditDataTable4buffer = MainStrucTableTap4(
   field11: "",
   field12: "",
 );
+
+//Delete
+
+MainStrucTableTap4 DeleteDataTable4buffer = MainStrucTableTap4(
+  number: "",
+  field01: "",
+  field02: "",
+  field03: "",
+  field04: "",
+  field05: "",
+  field06: "",
+  field07: "",
+  field08: "",
+  field09: "",
+  field10: "",
+  field11: "",
+  field12: "",
+);

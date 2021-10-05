@@ -33,3 +33,19 @@ MainStrucTableTap12 EditDataTable12buffer = MainStrucTableTap12(
   field09: "",
   field10: "",
 );
+
+// Delete
+
+MainStrucTableTap12 DeleteDataTable12buffer = MainStrucTableTap12(
+  number: "",
+  field01: "",
+  field02: "",
+  field03: "",
+  field04: "",
+  field05: "",
+  field06: "",
+  field07: "",
+  field08: "",
+  field09: "",
+  field10: "",
+);

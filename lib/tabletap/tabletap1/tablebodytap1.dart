@@ -140,6 +140,7 @@ class _DataListTableState extends State<DataListTable> {
 
     void _Delete(String s) {
       _CloseYNPopup();
+
       context.read<FetchDataTable1Bloc>().add(DataSequncePage1.delete);
     }
 
@@ -151,9 +152,24 @@ class _DataListTableState extends State<DataListTable> {
       BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
     }
 
-    void _tapDelete(String s) {
-      _CallYNPopup('Delete ${s}', 'Are you sure you want to delete ${s}?',
-          'Delete', 'Cancel', _Delete, _CloseYNPopup, s, true);
+    void _tapDelete(MainStrucTableTap1 s) {
+      // print(s.field01);
+      DeleteDataTable1buffer.number = s.number;
+      DeleteDataTable1buffer.field01 = s.field01;
+      DeleteDataTable1buffer.field02 = s.field02;
+      DeleteDataTable1buffer.field03 = s.field03;
+      DeleteDataTable1buffer.field04 = s.field04;
+      DeleteDataTable1buffer.field05 = s.field05;
+      DeleteDataTable1buffer.field06 = s.field06;
+      _CallYNPopup(
+          'Delete ${s.number}',
+          'Are you sure you want to delete ${s.number}?',
+          'Delete',
+          'Cancel',
+          _Delete,
+          _CloseYNPopup,
+          s.number,
+          true);
     }
 
     //all cells data for this page.
@@ -295,12 +311,12 @@ DataRow _getDataRow(
 
   return DataRow(
       cells: [
+        _getDataCell_Label(number, nDataColumnWidth),
         _getDataCell_Label(field01, nDataColumnWidth),
         _getDataCell_Label(field02, nDataColumnWidth),
         _getDataCell_Label(field03, nDataColumnWidth),
         _getDataCell_Label(field04, nDataColumnWidth),
         _getDataCell_Label(field05, nDataColumnWidth),
-        _getDataCell_Label(field06, nDataColumnWidth),
         _getDataCell_Icon(number, funcEdit, funcDelete, nDataColumnWidthIcon,
             nDataWidthIcon, nMarginToMakeIconSmaller, getData),
       ],
@@ -356,7 +372,7 @@ DataCell _getDataCell_Icon(
   }
 
   void _tapDelete() {
-    funcDelete(sId);
+    funcDelete(GetData);
   }
 
   return DataCell(
