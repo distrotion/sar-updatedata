@@ -284,9 +284,10 @@ class __TableStrucMain7State extends State<_TableStrucMain7> {
                         ComBtnBlack(
                             sLabel: "Save",
                             func: () {
-                              print(EditDataTable7buffer.field04);
-                              // context.read<FetchDataTable1Bloc>().add(
-                              //     DataSequncePage1.update); //<------------------
+                              EditDataTable7buffer = EditDataTable7;
+                              context.read<FetchDataTable7Bloc>().add(
+                                  DataSequncePage7
+                                      .update); //<------------------
                             },
                             nWidth: 80),
                         SizedBox(

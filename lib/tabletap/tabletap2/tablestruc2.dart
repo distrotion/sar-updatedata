@@ -265,9 +265,11 @@ class __TableStrucMain2State extends State<_TableStrucMain2> {
                           ComBtnBlack(
                               sLabel: "Save",
                               func: () {
-                                print(EditDataTable2buffer.field04);
-                                // context.read<FetchDataTable2Bloc>().add(
-                                //     DataSequncePage2.update); //<------------------
+                                // print(EditDataTable2buffer.field04);
+                                EditDataTable2buffer = EditDataTable2;
+                                context.read<FetchDataTable2Bloc>().add(
+                                    DataSequncePage2
+                                        .update); //<------------------
                               },
                               nWidth: 80),
                           SizedBox(
@@ -301,8 +303,8 @@ class __TableStrucMain2State extends State<_TableStrucMain2> {
                               sLabel: "New",
                               func: () {
                                 context
-                                    .read<FetchDataTable1Bloc>()
-                                    .add(DataSequncePage1.insert);
+                                    .read<FetchDataTable2Bloc>()
+                                    .add(DataSequncePage2.insert);
                               },
                               nWidth: 80),
                         ],

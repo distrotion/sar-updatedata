@@ -227,9 +227,10 @@ class __TableStrucMain3State extends State<_TableStrucMain3> {
                         ComBtnBlack(
                             sLabel: "Save",
                             func: () {
-                              print(EditDataTable3buffer.field04);
-                              // context.read<FetchDataTable1Bloc>().add(
-                              //     DataSequncePage1.update); //<------------------
+                              EditDataTable3buffer = EditDataTable3;
+                              context.read<FetchDataTable3Bloc>().add(
+                                  DataSequncePage3
+                                      .update); //<------------------
                             },
                             nWidth: 134),
                         SizedBox(
