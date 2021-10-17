@@ -225,7 +225,7 @@ class __TableStrucMain8State extends State<_TableStrucMain8> {
                       ComBtnBlack(
                           sLabel: "Save",
                           func: () {
-                            EditDataTable8buffer = EditDataTable8;
+                            // EditDataTable8buffer = EditDataTable8;
                             context.read<FetchDataTable8Bloc>().add(
                                 DataSequncePage8.update); //<------------------
                           },

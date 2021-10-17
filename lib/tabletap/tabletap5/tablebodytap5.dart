@@ -141,8 +141,10 @@ class _DataListTable5State extends State<DataListTable5> {
       // _CallYNPopup('Edit ${s}', 'Do you want to Edit ${s} now?', 'Yes', 'No',
       //     _Edit, _CloseYNPopup, s, false);
       EditDataTable5 = s;
+      EditDataTable5buffer = s;
       undercontroltap5 = true;
-      BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+      context.read<FetchDataTable5Bloc>().add(DataSequncePage5.select);
+      // BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
     }
 
     void _tapDelete(MainStrucTableTap5 s) {

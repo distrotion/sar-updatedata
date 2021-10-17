@@ -141,8 +141,10 @@ class _DataListTable8State extends State<DataListTable8> {
       // _CallYNPopup('Edit ${s}', 'Do you want to Edit ${s} now?', 'Yes', 'No',
       //     _Edit, _CloseYNPopup, s, false);
       EditDataTable8 = s;
+      EditDataTable8buffer = s;
       undercontroltap8 = true;
-      BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+      context.read<FetchDataTable8Bloc>().add(DataSequncePage8.select);
+      // BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
     }
 
     void _tapDelete(MainStrucTableTap8 s) {

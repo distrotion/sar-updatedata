@@ -338,7 +338,7 @@ class __TableStrucMain12State extends State<_TableStrucMain12> {
                         ComBtnBlack(
                             sLabel: "Save",
                             func: () {
-                              EditDataTable12buffer = EditDataTable12;
+                              // EditDataTable12buffer = EditDataTable12;
                               context.read<FetchDataTable12Bloc>().add(
                                   DataSequncePage12
                                       .update); //<------------------

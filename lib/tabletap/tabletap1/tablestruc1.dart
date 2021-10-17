@@ -269,7 +269,7 @@ class __TableStrucMain1State extends State<_TableStrucMain1> {
                               sLabel: "Save",
                               func: () {
                                 // print(EditDataTable1buffer.field04);
-                                EditDataTable1buffer = EditDataTable1;
+                                // EditDataTable1buffer = EditDataTable1;
                                 context.read<FetchDataTable1Bloc>().add(
                                     DataSequncePage1
                                         .update); //<------------------

@@ -391,7 +391,7 @@ class __TableStrucMain4State extends State<_TableStrucMain4> {
                           ComBtnBlack(
                               sLabel: "Save",
                               func: () {
-                                EditDataTable4buffer = EditDataTable4;
+                                // EditDataTable4buffer = EditDataTable4;
                                 context.read<FetchDataTable4Bloc>().add(
                                     DataSequncePage4
                                         .update); //<------------------
