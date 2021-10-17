@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pick_edit_datatable/bloc/BlocPageRebuild.dart';
@@ -190,32 +192,42 @@ class _DataListTableState extends State<DataListTable> {
     //fixed error when sort the hide column on mobile
     // nCurrentSortIndex = 0;
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: DataTable(
-        sortColumnIndex: nCurrentSortIndex,
-        sortAscending: isSortAscending,
-        showCheckboxColumn:
-            false, //Hide checkbox that come from tap row 'onselectchanged'
-        columnSpacing: 10,
-        dataRowHeight: 56,
-        // Header Column -----------------------------------------------------------
-        columns: [
-          _getDataColumn(1, "ID", 'Sort Field 1', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              2, "User Name", 'Sort Field 2', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              3, "Password", 'Sort Field 3', nDataColumnWidth, tapSort),
-          _getDataColumn(4, "Name", 'Sort Field 4', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              5, "Section", 'Sort Field 5', nDataColumnWidth, tapSort),
-          _getDataColumn(6, "Role", 'Sort Field 6', nDataColumnWidth, tapSort),
-          _getBlankDataColumn(nDataColumnWidthIcon),
-        ],
-        // Cell Row  -----------------------------------------------------------
-        rows: [
-          for (DataRow dataRow in RowDataInput) dataRow,
-        ],
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(
+        dragDevices: {
+          PointerDeviceKind.touch,
+          PointerDeviceKind.mouse,
+        },
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(
+          sortColumnIndex: nCurrentSortIndex,
+          sortAscending: isSortAscending,
+          showCheckboxColumn:
+              false, //Hide checkbox that come from tap row 'onselectchanged'
+          columnSpacing: 10,
+          dataRowHeight: 56,
+          // Header Column -----------------------------------------------------------
+          columns: [
+            _getDataColumn(1, "ID", 'Sort Field 1', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                2, "User Name", 'Sort Field 2', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                3, "Password", 'Sort Field 3', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                4, "Name", 'Sort Field 4', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                5, "Section", 'Sort Field 5', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                6, "Role", 'Sort Field 6', nDataColumnWidth, tapSort),
+            _getBlankDataColumn(nDataColumnWidthIcon),
+          ],
+          // Cell Row  -----------------------------------------------------------
+          rows: [
+            for (DataRow dataRow in RowDataInput) dataRow,
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pick_edit_datatable/bloc/BlocPageRebuild.dart';
@@ -66,214 +68,223 @@ class __TableStrucMain8State extends State<_TableStrucMain8> {
       });
     }
 
-    return SingleChildScrollView(
-        child: Wrap(
-      children: [
-        Container(
-          // color: Colors.red,
-          width: 500,
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: CustomTheme.colorGreyBg,
-                  borderRadius: BorderRadius.all(Radius.circular(24)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: CustomTheme.colorShadowBgStrong,
-                        offset: Offset(0, 0),
-                        blurRadius: 10,
-                        spreadRadius: 0)
-                  ],
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(
+        dragDevices: {
+          PointerDeviceKind.touch,
+          PointerDeviceKind.mouse,
+        },
+      ),
+      child: SingleChildScrollView(
+          child: Wrap(
+        children: [
+          Container(
+            // color: Colors.red,
+            width: 500,
+            child: Column(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: CustomTheme.colorGreyBg,
+                    borderRadius: BorderRadius.all(Radius.circular(24)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: CustomTheme.colorShadowBgStrong,
+                          offset: Offset(0, 0),
+                          blurRadius: 10,
+                          spreadRadius: 0)
+                    ],
+                  ),
+                  child: DataListTable8(
+                    datainput: _datainput,
+                  ),
                 ),
-                child: DataListTable8(
+                _BottomPageNum(
+                  func: tapChangeTablePage,
                   datainput: _datainput,
-                ),
-              ),
-              _BottomPageNum(
-                func: tapChangeTablePage,
-                datainput: _datainput,
-              )
-            ],
+                )
+              ],
+            ),
           ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: CustomTheme.colorGreyBg,
-            borderRadius: BorderRadius.all(Radius.circular(24)),
-            boxShadow: [
-              BoxShadow(
-                  color: CustomTheme.colorShadowBgStrong,
-                  offset: Offset(0, 0),
-                  blurRadius: 10,
-                  spreadRadius: 0)
-            ],
-          ),
-          width: 500,
-          height: 335,
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  width: 460,
-                  height: 50,
-                  color: Colors.blue,
+          Container(
+            decoration: BoxDecoration(
+              color: CustomTheme.colorGreyBg,
+              borderRadius: BorderRadius.all(Radius.circular(24)),
+              boxShadow: [
+                BoxShadow(
+                    color: CustomTheme.colorShadowBgStrong,
+                    offset: Offset(0, 0),
+                    blurRadius: 10,
+                    spreadRadius: 0)
+              ],
+            ),
+            width: 500,
+            height: 335,
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    width: 460,
+                    height: 50,
+                    color: Colors.blue,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: 400,
-                height: 40,
-                // color: Colors.red,
-                child: ComInputText(
-                  isContr: undercontroltap8,
-                  fnContr: (input) {
-                    undercontroltap8 = input;
-                  },
-                  sValue: EditDataTable8.number,
-                  returnfunc: () {},
-                  isEnabled: false,
+                SizedBox(
+                  height: 10,
                 ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                width: 400,
-                height: 40,
-                // color: Colors.red,
-                child: ComInputText(
+                Container(
+                  width: 400,
+                  height: 40,
+                  // color: Colors.red,
+                  child: ComInputText(
                     isContr: undercontroltap8,
                     fnContr: (input) {
                       undercontroltap8 = input;
                     },
-                    sValue: EditDataTable8.field01,
-                    returnfunc: (String s) {
-                      EditDataTable8buffer.field01 = s;
-                    }),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                width: 400,
-                height: 40,
-                // color: Colors.red,
-                child: ComInputText(
-                  isContr: undercontroltap8,
-                  fnContr: (input) {
-                    undercontroltap8 = input;
-                  },
-                  sValue: EditDataTable8.field02,
-                  returnfunc: (String s) {
-                    EditDataTable8buffer.field02 = s;
-                  },
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                width: 400,
-                height: 40,
-                // color: Colors.red,
-                child: ComInputText(
-                  isContr: undercontroltap8,
-                  fnContr: (input) {
-                    undercontroltap8 = input;
-                  },
-                  sValue: EditDataTable8.field03,
-                  returnfunc: (String s) {
-                    EditDataTable8buffer.field03 = s;
-                  },
-                ),
-              ),
-              // SizedBox(
-              //   height: 5,
-              // ),
-              // Container(
-              //   width: 400,
-              //   height: 40,
-              //   // color: Colors.red,
-              //   child: ComInputText(
-              //     isContr: undercontroltap8,
-              //     fnContr: (input) {
-              //       undercontroltap8 = input;
-              //     },
-              //     sValue: EditDataTable8.field04,
-              //     returnfunc: (String s) {
-              //       EditDataTable8buffer.field04 = s;
-              //     },
-              //   ),
-              // ),
-              SizedBox(
-                height: 10,
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  width: 460,
-                  height: 40,
-                  // color: Colors.blue,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ComBtnBlack(
-                          sLabel: "Save",
-                          func: () {
-                            // EditDataTable8buffer = EditDataTable8;
-                            context.read<FetchDataTable8Bloc>().add(
-                                DataSequncePage8.update); //<------------------
-                          },
-                          nWidth: 134),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      ComBtnBlackBorder(
-                          sLabel: "Cancle",
-                          cBg: Colors.red,
-                          func: () {
-                            undercontroltap8 = true;
-                            EditDataTable8 = MainStrucTableTap8(
-                                number: "",
-                                field01: "",
-                                field02: "",
-                                field03: "",
-                                field04: "",
-                                field05: "",
-                                field06: "",
-                                field07: "",
-                                field08: "",
-                                field09: "",
-                                field10: "");
-                            BlocProvider.of<BlocPageRebuild>(context)
-                                .rebuildPage();
-                          },
-                          nWidth: 134),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      ComBtnBlackBorder(
-                          sLabel: "New",
-                          func: () {
-                            context
-                                .read<FetchDataTable8Bloc>()
-                                .add(DataSequncePage8.insert);
-                          },
-                          nWidth: 134),
-                    ],
+                    sValue: EditDataTable8.number,
+                    returnfunc: () {},
+                    isEnabled: false,
                   ),
                 ),
-              ),
-            ],
-          ),
-        )
-      ],
-    ));
+                SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  width: 400,
+                  height: 40,
+                  // color: Colors.red,
+                  child: ComInputText(
+                      isContr: undercontroltap8,
+                      fnContr: (input) {
+                        undercontroltap8 = input;
+                      },
+                      sValue: EditDataTable8.field01,
+                      returnfunc: (String s) {
+                        EditDataTable8buffer.field01 = s;
+                      }),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  width: 400,
+                  height: 40,
+                  // color: Colors.red,
+                  child: ComInputText(
+                    isContr: undercontroltap8,
+                    fnContr: (input) {
+                      undercontroltap8 = input;
+                    },
+                    sValue: EditDataTable8.field02,
+                    returnfunc: (String s) {
+                      EditDataTable8buffer.field02 = s;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  width: 400,
+                  height: 40,
+                  // color: Colors.red,
+                  child: ComInputText(
+                    isContr: undercontroltap8,
+                    fnContr: (input) {
+                      undercontroltap8 = input;
+                    },
+                    sValue: EditDataTable8.field03,
+                    returnfunc: (String s) {
+                      EditDataTable8buffer.field03 = s;
+                    },
+                  ),
+                ),
+                // SizedBox(
+                //   height: 5,
+                // ),
+                // Container(
+                //   width: 400,
+                //   height: 40,
+                //   // color: Colors.red,
+                //   child: ComInputText(
+                //     isContr: undercontroltap8,
+                //     fnContr: (input) {
+                //       undercontroltap8 = input;
+                //     },
+                //     sValue: EditDataTable8.field04,
+                //     returnfunc: (String s) {
+                //       EditDataTable8buffer.field04 = s;
+                //     },
+                //   ),
+                // ),
+                SizedBox(
+                  height: 10,
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    width: 460,
+                    height: 40,
+                    // color: Colors.blue,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ComBtnBlack(
+                            sLabel: "Save",
+                            func: () {
+                              // EditDataTable8buffer = EditDataTable8;
+                              context.read<FetchDataTable8Bloc>().add(
+                                  DataSequncePage8
+                                      .update); //<------------------
+                            },
+                            nWidth: 134),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        ComBtnBlackBorder(
+                            sLabel: "Cancle",
+                            cBg: Colors.red,
+                            func: () {
+                              undercontroltap8 = true;
+                              EditDataTable8 = MainStrucTableTap8(
+                                  number: "",
+                                  field01: "",
+                                  field02: "",
+                                  field03: "",
+                                  field04: "",
+                                  field05: "",
+                                  field06: "",
+                                  field07: "",
+                                  field08: "",
+                                  field09: "",
+                                  field10: "");
+                              BlocProvider.of<BlocPageRebuild>(context)
+                                  .rebuildPage();
+                            },
+                            nWidth: 134),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        ComBtnBlackBorder(
+                            sLabel: "New",
+                            func: () {
+                              context
+                                  .read<FetchDataTable8Bloc>()
+                                  .add(DataSequncePage8.insert);
+                            },
+                            nWidth: 134),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      )),
+    );
   }
 }
 

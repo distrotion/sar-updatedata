@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pick_edit_datatable/bloc/BlocPageRebuild.dart';
@@ -289,54 +291,64 @@ class _DataListTable11State extends State<DataListTable11> {
     //fixed error when sort the hide column on mobile
     // nCurrentSortIndex = 0;
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: DataTable(
-        sortColumnIndex: nCurrentSortIndex,
-        sortAscending: isSortAscending,
-        showCheckboxColumn:
-            false, //Hide checkbox that come from tap row 'onselectchanged'
-        columnSpacing: 10,
-        dataRowHeight: 56,
-        // Header Column -----------------------------------------------------------
-        columns: [
-          _getDataColumn(1, "No", 'Sort Field 1', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              2, "Ins-Id", 'Sort Field 2', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              3, "Ins-Name", 'Sort Field 3', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              4, "ItemId", 'Sort Field 4', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              5, "ItemName", 'Sort Field 5', nDataColumnWidth, tapSort),
-          _getDataColumn(6, "Cost", 'Sort Field 6', nDataColumnWidth, tapSort),
-          _getDataColumn(7, "Price", 'Sort Field 7', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              8, "Unit-01", 'Sort Field 8', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              9, "Unit-02", 'Sort Field 9', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              10, "Unit-03", 'Sort Field 10', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              11, "Unit-04", 'Sort Field 11', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              12, "Unit-05", 'Sort Field 12', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              13, "Unit-06", 'Sort Field 13', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              14, "Unit-07", 'Sort Field 14', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              15, "Unit-08", 'Sort Field 15', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              16, "Unit-09", 'Sort Field 16', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              17, "Unit-10", 'Sort Field 17', nDataColumnWidth, tapSort),
-          _getBlankDataColumn(nDataColumnWidthIcon),
-        ],
-        // Cell Row  -----------------------------------------------------------
-        rows: [
-          for (DataRow dataRow in RowDataInput) dataRow,
-        ],
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(
+        dragDevices: {
+          PointerDeviceKind.touch,
+          PointerDeviceKind.mouse,
+        },
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(
+          sortColumnIndex: nCurrentSortIndex,
+          sortAscending: isSortAscending,
+          showCheckboxColumn:
+              false, //Hide checkbox that come from tap row 'onselectchanged'
+          columnSpacing: 10,
+          dataRowHeight: 56,
+          // Header Column -----------------------------------------------------------
+          columns: [
+            _getDataColumn(1, "No", 'Sort Field 1', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                2, "Ins-Id", 'Sort Field 2', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                3, "Ins-Name", 'Sort Field 3', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                4, "ItemId", 'Sort Field 4', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                5, "ItemName", 'Sort Field 5', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                6, "Cost", 'Sort Field 6', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                7, "Price", 'Sort Field 7', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                8, "Unit-01", 'Sort Field 8', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                9, "Unit-02", 'Sort Field 9', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                10, "Unit-03", 'Sort Field 10', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                11, "Unit-04", 'Sort Field 11', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                12, "Unit-05", 'Sort Field 12', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                13, "Unit-06", 'Sort Field 13', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                14, "Unit-07", 'Sort Field 14', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                15, "Unit-08", 'Sort Field 15', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                16, "Unit-09", 'Sort Field 16', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                17, "Unit-10", 'Sort Field 17', nDataColumnWidth, tapSort),
+            _getBlankDataColumn(nDataColumnWidthIcon),
+          ],
+          // Cell Row  -----------------------------------------------------------
+          rows: [
+            for (DataRow dataRow in RowDataInput) dataRow,
+          ],
+        ),
       ),
     );
   }

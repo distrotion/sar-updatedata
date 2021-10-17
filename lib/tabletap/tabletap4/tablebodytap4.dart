@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pick_edit_datatable/bloc/BlocPageRebuild.dart';
@@ -236,42 +238,54 @@ class _DataListTable4State extends State<DataListTable4> {
     //fixed error when sort the hide column on mobile
     // nCurrentSortIndex = 0;
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: DataTable(
-        sortColumnIndex: nCurrentSortIndex,
-        sortAscending: isSortAscending,
-        showCheckboxColumn:
-            false, //Hide checkbox that come from tap row 'onselectchanged'
-        columnSpacing: 10,
-        dataRowHeight: 56,
-        // Header Column -----------------------------------------------------------
-        columns: [
-          _getDataColumn(1, "NO", 'Sort Field 1', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              2, "CustId", 'Sort Field 2', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              3, "CustFull", 'Sort Field 3', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              4, "CustShort", 'Sort Field 4', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              5, "Branch", 'Sort Field 5', nDataColumnWidth, tapSort),
-          _getDataColumn(6, "Code", 'Sort Field 6', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              7, "Freq-Req", 'Sort Field 7', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              8, "Incharge", 'Sort Field 8', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              9, "SubLeader", 'Sort Field 9', nDataColumnWidth, tapSort),
-          _getDataColumn(10, "GL", 'Sort Field 10', nDataColumnWidth, tapSort),
-          _getDataColumn(11, "JP", 'Sort Field 11', nDataColumnWidth, tapSort),
-          _getDataColumn(11, "DMG", 'Sort Field 11', nDataColumnWidth, tapSort),
-          _getBlankDataColumn(nDataColumnWidthIcon),
-        ],
-        // Cell Row  -----------------------------------------------------------
-        rows: [
-          for (DataRow dataRow in RowDataInput) dataRow,
-        ],
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(
+        dragDevices: {
+          PointerDeviceKind.touch,
+          PointerDeviceKind.mouse,
+        },
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(
+          sortColumnIndex: nCurrentSortIndex,
+          sortAscending: isSortAscending,
+          showCheckboxColumn:
+              false, //Hide checkbox that come from tap row 'onselectchanged'
+          columnSpacing: 10,
+          dataRowHeight: 56,
+          // Header Column -----------------------------------------------------------
+          columns: [
+            _getDataColumn(1, "NO", 'Sort Field 1', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                2, "CustId", 'Sort Field 2', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                3, "CustFull", 'Sort Field 3', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                4, "CustShort", 'Sort Field 4', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                5, "Branch", 'Sort Field 5', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                6, "Code", 'Sort Field 6', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                7, "Freq-Req", 'Sort Field 7', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                8, "Incharge", 'Sort Field 8', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                9, "SubLeader", 'Sort Field 9', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                10, "GL", 'Sort Field 10', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                11, "JP", 'Sort Field 11', nDataColumnWidth, tapSort),
+            _getDataColumn(
+                11, "DMG", 'Sort Field 11', nDataColumnWidth, tapSort),
+            _getBlankDataColumn(nDataColumnWidthIcon),
+          ],
+          // Cell Row  -----------------------------------------------------------
+          rows: [
+            for (DataRow dataRow in RowDataInput) dataRow,
+          ],
+        ),
       ),
     );
   }
