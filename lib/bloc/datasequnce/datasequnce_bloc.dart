@@ -32,8 +32,7 @@ import 'datasequnce_event.dart';
 import 'datatest.dart';
 //----------------------------------------------------------------
 
-// String server = "http://172.20.30.46:9200/";
-String server = "http://127.0.0.1:9200/";
+String server = "http://localhost:9200/";
 
 //------------------------------------------------------- First
 
@@ -75,12 +74,12 @@ Stream<List<MainStrucTableTap1>> selectData_fn(
   List<MainStrucTableTap1> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap1(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['Username'].toString(),
-      field02: data_input[i]['Password'].toString(),
-      field03: data_input[i]['Name'].toString(),
-      field04: data_input[i]['Section'].toString(),
-      field05: data_input[i]['RoleId'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['Username'],
+      field02: data_input[i]['Password'],
+      field03: data_input[i]['Name'],
+      field04: data_input[i]['Section'],
+      field05: data_input[i]['RoleId'],
       field06: "",
       field07: "",
       field08: "",
@@ -126,12 +125,12 @@ Stream<List<MainStrucTableTap1>> updateData_fn(
   List<MainStrucTableTap1> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap1(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['Username'].toString(),
-      field02: data_input[i]['Password'].toString(),
-      field03: data_input[i]['Name'].toString(),
-      field04: data_input[i]['Section'].toString(),
-      field05: data_input[i]['RoleId'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['Username'],
+      field02: data_input[i]['Password'],
+      field03: data_input[i]['Name'],
+      field04: data_input[i]['Section'],
+      field05: data_input[i]['RoleId'],
       field06: "",
       field07: "",
       field08: "",
@@ -177,12 +176,12 @@ Stream<List<MainStrucTableTap1>> deleteData_fn(
   List<MainStrucTableTap1> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap1(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['Username'].toString(),
-      field02: data_input[i]['Password'].toString(),
-      field03: data_input[i]['Name'].toString(),
-      field04: data_input[i]['Section'].toString(),
-      field05: data_input[i]['RoleId'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['Username'],
+      field02: data_input[i]['Password'],
+      field03: data_input[i]['Name'],
+      field04: data_input[i]['Section'],
+      field05: data_input[i]['RoleId'],
       field06: "",
       field07: "",
       field08: "",
@@ -228,12 +227,12 @@ Stream<List<MainStrucTableTap1>> InsertData_fn(
   List<MainStrucTableTap1> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap1(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['Username'].toString(),
-      field02: data_input[i]['Password'].toString(),
-      field03: data_input[i]['Name'].toString(),
-      field04: data_input[i]['Section'].toString(),
-      field05: data_input[i]['RoleId'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['Username'],
+      field02: data_input[i]['Password'],
+      field03: data_input[i]['Name'],
+      field04: data_input[i]['Section'],
+      field05: data_input[i]['RoleId'],
       field06: "",
       field07: "",
       field08: "",
@@ -287,12 +286,12 @@ Stream<List<MainStrucTableTap2>> selectData2_fn(
   List<MainStrucTableTap2> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap2(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['CustId'].toString(),
-      field02: data_input[i]['CustFull'].toString(),
-      field03: data_input[i]['CustShort'].toString(),
-      field04: data_input[i]['Branch'].toString(),
-      field05: data_input[i]['CODE'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['CustId'],
+      field02: data_input[i]['CustFull'],
+      field03: data_input[i]['CustShort'],
+      field04: data_input[i]['Branch'],
+      field05: data_input[i]['CODE'],
       field06: "",
       field07: "",
       field08: "",
@@ -307,7 +306,7 @@ Stream<List<MainStrucTableTap2>> selectData2_fn(
 
 Stream<List<MainStrucTableTap2>> updateData2_fn(
     List<MainStrucTableTap2> state) async* {
-  print("UPDATE FUNCTION BLOC 2");
+  print("UPDATE FUNCTION BLOC");
 
   var input_init = {
     "Id": EditDataTable2buffer.number,
@@ -339,12 +338,12 @@ Stream<List<MainStrucTableTap2>> updateData2_fn(
   List<MainStrucTableTap2> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap2(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['CustId'].toString(),
-      field02: data_input[i]['CustFull'].toString(),
-      field03: data_input[i]['CustShort'].toString(),
-      field04: data_input[i]['Branch'].toString(),
-      field05: data_input[i]['CODE'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['CustId'],
+      field02: data_input[i]['CustFull'],
+      field03: data_input[i]['CustShort'],
+      field04: data_input[i]['Branch'],
+      field05: data_input[i]['CODE'],
       field06: "",
       field07: "",
       field08: "",
@@ -389,12 +388,12 @@ Stream<List<MainStrucTableTap2>> deleteData2_fn(
   List<MainStrucTableTap2> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap2(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['CustId'].toString(),
-      field02: data_input[i]['CustFull'].toString(),
-      field03: data_input[i]['CustShort'].toString(),
-      field04: data_input[i]['Branch'].toString(),
-      field05: data_input[i]['CODE'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['CustId'],
+      field02: data_input[i]['CustFull'],
+      field03: data_input[i]['CustShort'],
+      field04: data_input[i]['Branch'],
+      field05: data_input[i]['CODE'],
       field06: "",
       field07: "",
       field08: "",
@@ -420,8 +419,8 @@ Stream<List<MainStrucTableTap2>> InsertData2_fn(
     "CODE": EditDataTable2buffer.field05
   };
 
-  final response_init = await http
-      .post(Uri.parse(server + "Customer_Data_insert"), body: input_init);
+  final response_init =
+      await http.post(Uri.parse(server + "user_insert"), body: input_init);
   //------------------------------------------------------------------------------
 
   String input = "hi data";
@@ -440,12 +439,12 @@ Stream<List<MainStrucTableTap2>> InsertData2_fn(
   List<MainStrucTableTap2> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap2(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['CustId'].toString(),
-      field02: data_input[i]['CustFull'].toString(),
-      field03: data_input[i]['CustShort'].toString(),
-      field04: data_input[i]['Branch'].toString(),
-      field05: data_input[i]['CODE'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['CustId'],
+      field02: data_input[i]['CustFull'],
+      field03: data_input[i]['CustShort'],
+      field04: data_input[i]['Branch'],
+      field05: data_input[i]['CODE'],
       field06: "",
       field07: "",
       field08: "",
@@ -498,9 +497,9 @@ Stream<List<MainStrucTableTap3>> selectData3_fn(
   List<MainStrucTableTap3> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap3(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['FrequencyId'].toString(),
-      field02: data_input[i]['Frequency'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['FrequencyId'],
+      field02: data_input[i]['Frequency'],
       field03: "",
       field04: "",
       field05: "",
@@ -544,9 +543,9 @@ Stream<List<MainStrucTableTap3>> updateData3_fn(
   List<MainStrucTableTap3> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap3(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['FrequencyId'].toString(),
-      field02: data_input[i]['Frequency'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['FrequencyId'],
+      field02: data_input[i]['Frequency'],
       field03: "",
       field04: "",
       field05: "",
@@ -590,9 +589,9 @@ Stream<List<MainStrucTableTap3>> deleteData3_fn(
   List<MainStrucTableTap3> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap3(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['FrequencyId'].toString(),
-      field02: data_input[i]['Frequency'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['FrequencyId'],
+      field02: data_input[i]['Frequency'],
       field03: "",
       field04: "",
       field05: "",
@@ -636,9 +635,9 @@ Stream<List<MainStrucTableTap3>> InsertData3_fn(
   List<MainStrucTableTap3> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap3(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['FrequencyId'].toString(),
-      field02: data_input[i]['Frequency'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['FrequencyId'],
+      field02: data_input[i]['Frequency'],
       field03: "",
       field04: "",
       field05: "",
@@ -693,18 +692,18 @@ Stream<List<MainStrucTableTap4>> selectData4_fn(
   List<MainStrucTableTap4> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap4(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['CustId'].toString(),
-      field02: data_input[i]['CustFull'].toString(),
-      field03: data_input[i]['CustShort'].toString(),
-      field04: data_input[i]['Branch'].toString(),
-      field05: data_input[i]['Code'].toString(),
-      field06: data_input[i]['FrequencyRequest'].toString(),
-      field07: data_input[i]['Incharge'].toString(),
-      field08: data_input[i]['SubLeader'].toString(),
-      field09: data_input[i]['GL'].toString(),
-      field10: data_input[i]['JP'].toString(),
-      field11: data_input[i]['DMG'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['CustId'],
+      field02: data_input[i]['CustFull'],
+      field03: data_input[i]['CustShort'],
+      field04: data_input[i]['Branch'],
+      field05: data_input[i]['Code'],
+      field06: data_input[i]['FrequencyRequest'],
+      field07: data_input[i]['Incharge'],
+      field08: data_input[i]['SubLeader'],
+      field09: data_input[i]['GL'],
+      field10: data_input[i]['JP'],
+      field11: data_input[i]['DMG'],
       field12: "",
     ));
   }
@@ -751,18 +750,18 @@ Stream<List<MainStrucTableTap4>> updateData4_fn(
   List<MainStrucTableTap4> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap4(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['CustId'].toString(),
-      field02: data_input[i]['CustFull'].toString(),
-      field03: data_input[i]['CustShort'].toString(),
-      field04: data_input[i]['Branch'].toString(),
-      field05: data_input[i]['Code'].toString(),
-      field06: data_input[i]['FrequencyRequest'].toString(),
-      field07: data_input[i]['Incharge'].toString(),
-      field08: data_input[i]['SubLeader'].toString(),
-      field09: data_input[i]['GL'].toString(),
-      field10: data_input[i]['JP'].toString(),
-      field11: data_input[i]['DMG'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['CustId'],
+      field02: data_input[i]['CustFull'],
+      field03: data_input[i]['CustShort'],
+      field04: data_input[i]['Branch'],
+      field05: data_input[i]['Code'],
+      field06: data_input[i]['FrequencyRequest'],
+      field07: data_input[i]['Incharge'],
+      field08: data_input[i]['SubLeader'],
+      field09: data_input[i]['GL'],
+      field10: data_input[i]['JP'],
+      field11: data_input[i]['DMG'],
       field12: "",
     ));
   }
@@ -810,18 +809,18 @@ Stream<List<MainStrucTableTap4>> deleteData4_fn(
   List<MainStrucTableTap4> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap4(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['CustId'].toString(),
-      field02: data_input[i]['CustFull'].toString(),
-      field03: data_input[i]['CustShort'].toString(),
-      field04: data_input[i]['Branch'].toString(),
-      field05: data_input[i]['Code'].toString(),
-      field06: data_input[i]['FrequencyRequest'].toString(),
-      field07: data_input[i]['Incharge'].toString(),
-      field08: data_input[i]['SubLeader'].toString(),
-      field09: data_input[i]['GL'].toString(),
-      field10: data_input[i]['JP'].toString(),
-      field11: data_input[i]['DMG'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['CustId'],
+      field02: data_input[i]['CustFull'],
+      field03: data_input[i]['CustShort'],
+      field04: data_input[i]['Branch'],
+      field05: data_input[i]['Code'],
+      field06: data_input[i]['FrequencyRequest'],
+      field07: data_input[i]['Incharge'],
+      field08: data_input[i]['SubLeader'],
+      field09: data_input[i]['GL'],
+      field10: data_input[i]['JP'],
+      field11: data_input[i]['DMG'],
       field12: "",
     ));
   }
@@ -870,18 +869,18 @@ Stream<List<MainStrucTableTap4>> InsertData4_fn(
   List<MainStrucTableTap4> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap4(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['CustId'].toString(),
-      field02: data_input[i]['CustFull'].toString(),
-      field03: data_input[i]['CustShort'].toString(),
-      field04: data_input[i]['Branch'].toString(),
-      field05: data_input[i]['Code'].toString(),
-      field06: data_input[i]['FrequencyRequest'].toString(),
-      field07: data_input[i]['Incharge'].toString(),
-      field08: data_input[i]['SubLeader'].toString(),
-      field09: data_input[i]['GL'].toString(),
-      field10: data_input[i]['JP'].toString(),
-      field11: data_input[i]['DMG'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['CustId'],
+      field02: data_input[i]['CustFull'],
+      field03: data_input[i]['CustShort'],
+      field04: data_input[i]['Branch'],
+      field05: data_input[i]['Code'],
+      field06: data_input[i]['FrequencyRequest'],
+      field07: data_input[i]['Incharge'],
+      field08: data_input[i]['SubLeader'],
+      field09: data_input[i]['GL'],
+      field10: data_input[i]['JP'],
+      field11: data_input[i]['DMG'],
       field12: "",
     ));
   }
@@ -930,9 +929,9 @@ Stream<List<MainStrucTableTap5>> selectData5_fn(
   List<MainStrucTableTap5> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap5(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['GroupId'],
+      field02: data_input[i]['GroupName'],
       field03: "",
       field04: "",
       field05: "",
@@ -961,37 +960,6 @@ Stream<List<MainStrucTableTap5>> updateData5_fn(
       await http.post(Uri.parse(server + "GroupName_update"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "GroupName_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap5> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap5(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: "",
-      field04: "",
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-
-  state = stateoutput;
   yield state;
 }
 
@@ -1008,37 +976,7 @@ Stream<List<MainStrucTableTap5>> deleteData5_fn(
       await http.post(Uri.parse(server + "GroupName_delete"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "GroupName_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap5> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap5(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: "",
-      field04: "",
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1055,37 +993,7 @@ Stream<List<MainStrucTableTap5>> InsertData5_fn(
       await http.post(Uri.parse(server + "GroupName_insert"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "GroupName_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap5> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap5(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: "",
-      field04: "",
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1130,11 +1038,11 @@ Stream<List<MainStrucTableTap6>> selectData6_fn(
   List<MainStrucTableTap6> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap6(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['GroupId'],
+      field02: data_input[i]['GroupName'],
+      field03: data_input[i]['SampleTypeId'],
+      field04: data_input[i]['SampleTypeName'],
       field05: "",
       field06: "",
       field07: "",
@@ -1162,36 +1070,7 @@ Stream<List<MainStrucTableTap6>> updateData6_fn(
       body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "SampleType_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap6> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap6(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1210,36 +1089,7 @@ Stream<List<MainStrucTableTap6>> deleteData6_fn(
       body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "SampleType_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap6> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap6(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1258,36 +1108,7 @@ Stream<List<MainStrucTableTap6>> InsertData6_fn(
       body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "SampleType_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap6> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap6(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1331,13 +1152,13 @@ Stream<List<MainStrucTableTap7>> selectData7_fn(
   List<MainStrucTableTap7> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap7(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: data_input[i]['SampleId'].toString(),
-      field06: data_input[i]['SampleName'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['GroupId'],
+      field02: data_input[i]['GroupName'],
+      field03: data_input[i]['SampleTypeId'],
+      field04: data_input[i]['SampleTypeName'],
+      field05: data_input[i]['SampleId'],
+      field06: data_input[i]['SampleName'],
       field07: "",
       field08: "",
       field09: "",
@@ -1365,36 +1186,6 @@ Stream<List<MainStrucTableTap7>> updateData7_fn(
       body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "SampleName_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap7> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap7(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: data_input[i]['SampleId'].toString(),
-      field06: data_input[i]['SampleName'].toString(),
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
   yield state;
 }
 
@@ -1415,36 +1206,7 @@ Stream<List<MainStrucTableTap7>> deleteData7_fn(
       body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "SampleName_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap7> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap7(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: data_input[i]['SampleId'].toString(),
-      field06: data_input[i]['SampleName'].toString(),
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1465,36 +1227,7 @@ Stream<List<MainStrucTableTap7>> InsertData7_fn(
       body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "SampleName_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap7> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap7(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: data_input[i]['SampleId'].toString(),
-      field06: data_input[i]['SampleName'].toString(),
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1538,9 +1271,9 @@ Stream<List<MainStrucTableTap8>> selectData8_fn(
   List<MainStrucTableTap8> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap8(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['TankId'].toString(),
-      field02: data_input[i]['TankName'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['TankId'],
+      field02: data_input[i]['TankName'],
       field03: "",
       field04: "",
       field05: "",
@@ -1568,36 +1301,7 @@ Stream<List<MainStrucTableTap8>> updateData8_fn(
       await http.post(Uri.parse(server + "Tank_update"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "Tank_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap8> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap8(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['TankId'].toString(),
-      field02: data_input[i]['TankName'].toString(),
-      field03: "",
-      field04: "",
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1614,36 +1318,7 @@ Stream<List<MainStrucTableTap8>> deleteData8_fn(
       await http.post(Uri.parse(server + "Tank_delete"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "Tank_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap8> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap8(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['TankId'].toString(),
-      field02: data_input[i]['TankName'].toString(),
-      field03: "",
-      field04: "",
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1660,36 +1335,7 @@ Stream<List<MainStrucTableTap8>> InsertData8_fn(
       await http.post(Uri.parse(server + "Tank_insert"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "Tank_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap8> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap8(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['TankId'].toString(),
-      field02: data_input[i]['TankName'].toString(),
-      field03: "",
-      field04: "",
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1733,9 +1379,9 @@ Stream<List<MainStrucTableTap9>> selectData9_fn(
   List<MainStrucTableTap9> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap9(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['InstrumentId'].toString(),
-      field02: data_input[i]['InstrumentName'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['InstrumentId'],
+      field02: data_input[i]['InstrumentName'],
       field03: "",
       field04: "",
       field05: "",
@@ -1763,36 +1409,6 @@ Stream<List<MainStrucTableTap9>> updateData9_fn(
       body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "Instrument_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap9> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap9(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['InstrumentId'].toString(),
-      field02: data_input[i]['InstrumentName'].toString(),
-      field03: "",
-      field04: "",
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
   yield state;
 }
 
@@ -1809,36 +1425,7 @@ Stream<List<MainStrucTableTap9>> deleteData9_fn(
       body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "Instrument_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap9> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap9(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['InstrumentId'].toString(),
-      field02: data_input[i]['InstrumentName'].toString(),
-      field03: "",
-      field04: "",
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1855,36 +1442,7 @@ Stream<List<MainStrucTableTap9>> InsertData9_fn(
       body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "Instrument_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap9> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap9(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['InstrumentId'].toString(),
-      field02: data_input[i]['InstrumentName'].toString(),
-      field03: "",
-      field04: "",
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -1928,11 +1486,11 @@ Stream<List<MainStrucTableTap10>> selectData10_fn(
   List<MainStrucTableTap10> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap10(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['UnitId'].toString(),
-      field04: data_input[i]['UnitName'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['GroupId'],
+      field02: data_input[i]['GroupName'],
+      field03: data_input[i]['UnitId'],
+      field04: data_input[i]['UnitName'],
       field05: "",
       field06: "",
       field07: "",
@@ -1960,36 +1518,6 @@ Stream<List<MainStrucTableTap10>> updateData10_fn(
       await http.post(Uri.parse(server + "Unit_update"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "Unit_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap10> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap10(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['UnitId'].toString(),
-      field04: data_input[i]['UnitName'].toString(),
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
   yield state;
 }
 
@@ -2008,36 +1536,7 @@ Stream<List<MainStrucTableTap10>> deleteData10_fn(
       await http.post(Uri.parse(server + "Unit_delete"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "Unit_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap10> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap10(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['UnitId'].toString(),
-      field04: data_input[i]['UnitName'].toString(),
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -2056,36 +1555,6 @@ Stream<List<MainStrucTableTap10>> InsertData10_fn(
       await http.post(Uri.parse(server + "Unit_insert"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "Unit_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap10> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap10(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['UnitId'].toString(),
-      field04: data_input[i]['UnitName'].toString(),
-      field05: "",
-      field06: "",
-      field07: "",
-      field08: "",
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
   yield state;
 }
 
@@ -2129,23 +1598,23 @@ Stream<List<MainStrucTableTap11>> selectData11_fn(
   List<MainStrucTableTap11> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap11(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['InstrumentId'].toString(),
-      field02: data_input[i]['InstrumentName'].toString(),
-      field03: data_input[i]['ItemId'].toString(),
-      field04: data_input[i]['ItemName'].toString(),
-      field05: data_input[i]['Cost'].toString(),
-      field06: data_input[i]['Price'].toString(),
-      field07: data_input[i]['Unit1'].toString(),
-      field08: data_input[i]['Unit2'].toString(),
-      field09: data_input[i]['Unit3'].toString(),
-      field10: data_input[i]['Unit4'].toString(),
-      field11: data_input[i]['Unit5'].toString(),
-      field12: data_input[i]['Unit6'].toString(),
-      field13: data_input[i]['Unit7'].toString(),
-      field14: data_input[i]['Unit8'].toString(),
-      field15: data_input[i]['Unit9'].toString(),
-      field16: data_input[i]['Unit10'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['InstrumentId'],
+      field02: data_input[i]['InstrumentName'],
+      field03: data_input[i]['ItemId'],
+      field04: data_input[i]['ItemName'],
+      field05: data_input[i]['Cost'],
+      field06: data_input[i]['Price'],
+      field07: data_input[i]['Unit1'],
+      field08: data_input[i]['Unit2'],
+      field09: data_input[i]['Unit3'],
+      field10: data_input[i]['Unit4'],
+      field11: data_input[i]['Unit5'],
+      field12: data_input[i]['Unit6'],
+      field13: data_input[i]['Unit7'],
+      field14: data_input[i]['Unit8'],
+      field15: data_input[i]['Unit9'],
+      field16: data_input[i]['Unit10'],
       field17: "",
     ));
   }
@@ -2180,43 +1649,7 @@ Stream<List<MainStrucTableTap11>> updateData11_fn(
       await http.post(Uri.parse(server + "item_update"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "item_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap11> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap11(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['InstrumentId'].toString(),
-      field02: data_input[i]['InstrumentName'].toString(),
-      field03: data_input[i]['ItemId'].toString(),
-      field04: data_input[i]['ItemName'].toString(),
-      field05: data_input[i]['Cost'].toString(),
-      field06: data_input[i]['Price'].toString(),
-      field07: data_input[i]['Unit1'].toString(),
-      field08: data_input[i]['Unit2'].toString(),
-      field09: data_input[i]['Unit3'].toString(),
-      field10: data_input[i]['Unit4'].toString(),
-      field11: data_input[i]['Unit5'].toString(),
-      field12: data_input[i]['Unit6'].toString(),
-      field13: data_input[i]['Unit7'].toString(),
-      field14: data_input[i]['Unit8'].toString(),
-      field15: data_input[i]['Unit9'].toString(),
-      field16: data_input[i]['Unit10'].toString(),
-      field17: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -2247,43 +1680,7 @@ Stream<List<MainStrucTableTap11>> deleteData11_fn(
       await http.post(Uri.parse(server + "item_delete"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "item_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap11> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap11(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['InstrumentId'].toString(),
-      field02: data_input[i]['InstrumentName'].toString(),
-      field03: data_input[i]['ItemId'].toString(),
-      field04: data_input[i]['ItemName'].toString(),
-      field05: data_input[i]['Cost'].toString(),
-      field06: data_input[i]['Price'].toString(),
-      field07: data_input[i]['Unit1'].toString(),
-      field08: data_input[i]['Unit2'].toString(),
-      field09: data_input[i]['Unit3'].toString(),
-      field10: data_input[i]['Unit4'].toString(),
-      field11: data_input[i]['Unit5'].toString(),
-      field12: data_input[i]['Unit6'].toString(),
-      field13: data_input[i]['Unit7'].toString(),
-      field14: data_input[i]['Unit8'].toString(),
-      field15: data_input[i]['Unit9'].toString(),
-      field16: data_input[i]['Unit10'].toString(),
-      field17: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -2314,43 +1711,7 @@ Stream<List<MainStrucTableTap11>> InsertData11_fn(
       await http.post(Uri.parse(server + "item_insert"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "item_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap11> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap11(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['InstrumentId'].toString(),
-      field02: data_input[i]['InstrumentName'].toString(),
-      field03: data_input[i]['ItemId'].toString(),
-      field04: data_input[i]['ItemName'].toString(),
-      field05: data_input[i]['Cost'].toString(),
-      field06: data_input[i]['Price'].toString(),
-      field07: data_input[i]['Unit1'].toString(),
-      field08: data_input[i]['Unit2'].toString(),
-      field09: data_input[i]['Unit3'].toString(),
-      field10: data_input[i]['Unit4'].toString(),
-      field11: data_input[i]['Unit5'].toString(),
-      field12: data_input[i]['Unit6'].toString(),
-      field13: data_input[i]['Unit7'].toString(),
-      field14: data_input[i]['Unit8'].toString(),
-      field15: data_input[i]['Unit9'].toString(),
-      field16: data_input[i]['Unit10'].toString(),
-      field17: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
 
@@ -2394,15 +1755,15 @@ Stream<List<MainStrucTableTap12>> selectData12_fn(
   List<MainStrucTableTap12> stateoutput = [];
   for (var i = 0; i < data_input.length; i++) {
     stateoutput.add(MainStrucTableTap12(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: data_input[i]['InstrumentId'].toString(),
-      field06: data_input[i]['InsrumentName'].toString(),
-      field07: data_input[i]['ItemId'].toString(),
-      field08: data_input[i]['ItemName'].toString(),
+      number: data_input[i]['Id'],
+      field01: data_input[i]['GroupId'],
+      field02: data_input[i]['GroupName'],
+      field03: data_input[i]['SampleTypeId'],
+      field04: data_input[i]['SampleTypeName'],
+      field05: data_input[i]['InstrumentId'],
+      field06: data_input[i]['InsrumentName'],
+      field07: data_input[i]['ItemId'],
+      field08: data_input[i]['ItemName'],
       field09: "",
       field10: "",
     ));
@@ -2430,36 +1791,7 @@ Stream<List<MainStrucTableTap12>> updateData12_fn(
       await http.post(Uri.parse(server + "ItemGroup_update"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "ItemGroup_query"), body: input);
 
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap12> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap12(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: data_input[i]['InstrumentId'].toString(),
-      field06: data_input[i]['InsrumentName'].toString(),
-      field07: data_input[i]['ItemId'].toString(),
-      field08: data_input[i]['ItemName'].toString(),
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
   yield state;
 }
 
@@ -2482,36 +1814,7 @@ Stream<List<MainStrucTableTap12>> deleteData12_fn(
       await http.post(Uri.parse(server + "ItemGroup_delete"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "ItemGroup_query"), body: input);
 
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap12> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap12(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: data_input[i]['InstrumentId'].toString(),
-      field06: data_input[i]['InsrumentName'].toString(),
-      field07: data_input[i]['ItemId'].toString(),
-      field08: data_input[i]['ItemName'].toString(),
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
   yield state;
 }
 
@@ -2534,35 +1837,6 @@ Stream<List<MainStrucTableTap12>> InsertData12_fn(
       await http.post(Uri.parse(server + "ItemGroup_insert"), body: input_init);
 
   //------------------------------------------------------------------------------
-  String input = "hi data";
-  final response =
-      await http.post(Uri.parse(server + "ItemGroup_query"), body: input);
-
-  var data_input = [];
-  if (response.statusCode == 200) {
-    var databuff = jsonDecode(response.body);
-    data_input = databuff[0]['output'];
-    // print(data_input);
-  } else {
-    print("where is my server");
-  }
-
-  List<MainStrucTableTap12> stateoutput = [];
-  for (var i = 0; i < data_input.length; i++) {
-    stateoutput.add(MainStrucTableTap12(
-      number: data_input[i]['Id'].toString(),
-      field01: data_input[i]['GroupId'].toString(),
-      field02: data_input[i]['GroupName'].toString(),
-      field03: data_input[i]['SampleTypeId'].toString(),
-      field04: data_input[i]['SampleTypeName'].toString(),
-      field05: data_input[i]['InstrumentId'].toString(),
-      field06: data_input[i]['InsrumentName'].toString(),
-      field07: data_input[i]['ItemId'].toString(),
-      field08: data_input[i]['ItemName'].toString(),
-      field09: "",
-      field10: "",
-    ));
-  }
-  state = stateoutput;
+  state = [];
   yield state;
 }
