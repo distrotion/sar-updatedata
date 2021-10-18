@@ -32,8 +32,8 @@ import 'datasequnce_event.dart';
 import 'datatest.dart';
 //----------------------------------------------------------------
 
-String server = "http://172.20.30.46:9200/";
-// String server = "http://127.0.0.1:9200/";
+// String server = "http://172.20.30.46:9200/";
+String server = "http://127.0.0.1:9200/";
 
 //------------------------------------------------------- First
 

@@ -12,6 +12,7 @@ import 'package:pick_edit_datatable/widget/ComBtnBlack.dart';
 import 'package:pick_edit_datatable/widget/ComBtnBlackBorder.dart';
 import 'package:pick_edit_datatable/widget/ComInputText.dart';
 import 'package:pick_edit_datatable/widget/ComPageNumBtnGroup.dart';
+import 'package:pick_edit_datatable/widget/Easydropdown.dart';
 
 import 'modelintable.dart';
 
@@ -58,6 +59,9 @@ class __TableStrucMain2State extends State<_TableStrucMain2> {
     context.read<FetchDataTable2Bloc>().add(DataSequncePage2.select);
   }
 
+  String Branch = '';
+  String Code = '';
+
   @override
   Widget build(BuildContext context) {
     List<MainStrucTableTap2> _datainput = widget.datainput ?? [];
@@ -68,6 +72,8 @@ class __TableStrucMain2State extends State<_TableStrucMain2> {
       });
     }
 
+    EditDataTable2.field04 = Branch;
+    EditDataTable2.field05 = Code;
     return ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(
         dragDevices: {
@@ -208,38 +214,28 @@ class __TableStrucMain2State extends State<_TableStrucMain2> {
                     SizedBox(
                       height: 5,
                     ),
-                    Container(
+                    EasyDropDown(
                       width: 400,
                       height: 40,
-                      // color: Colors.red,
-                      child: ComInputText(
-                        isContr: undercontroltap2,
-                        fnContr: (input) {
-                          undercontroltap2 = input;
-                        },
-                        sValue: EditDataTable2.field04,
-                        returnfunc: (String s) {
-                          EditDataTable2buffer.field04 = s;
-                        },
-                      ),
+                      value: Branch,
+                      onChangeinside: (newValue) {
+                        Branch = newValue!;
+                        EditDataTable2buffer.field04 = newValue;
+                      },
+                      listdropdown: ['', 'RAYONG', 'BANGPOO', 'GATEWAY'],
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Container(
+                    EasyDropDown(
                       width: 400,
                       height: 40,
-                      // color: Colors.red,
-                      child: ComInputText(
-                        isContr: undercontroltap2,
-                        fnContr: (input) {
-                          undercontroltap2 = input;
-                        },
-                        sValue: EditDataTable2.field05,
-                        returnfunc: (String s) {
-                          EditDataTable2buffer.field05 = s;
-                        },
-                      ),
+                      value: Code,
+                      onChangeinside: (newValue) {
+                        Code = newValue!;
+                        EditDataTable2buffer.field05 = newValue;
+                      },
+                      listdropdown: ['', 'CTS', 'MKT', 'PHO'],
                     ),
                     SizedBox(
                       height: 5,
