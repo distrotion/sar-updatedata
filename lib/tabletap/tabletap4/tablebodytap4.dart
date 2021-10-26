@@ -1,19 +1,34 @@
+import 'dart:async';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pick_edit_datatable/bloc/BlocPageRebuild.dart';
 import 'package:pick_edit_datatable/bloc/datasequnce/datasequnce_bloc.dart';
 
 import 'package:pick_edit_datatable/bloc/datasequnce/datasequnce_event.dart';
+import 'package:pick_edit_datatable/style/style.dart';
+import 'package:pick_edit_datatable/tabletap/tabletap4/tablestruc4.dart';
+import 'package:pick_edit_datatable/widget/Advancedropdown.dart';
+import 'package:pick_edit_datatable/widget/ComBtnBlack.dart';
+import 'package:pick_edit_datatable/widget/ComBtnBlackBorder.dart';
 
 import 'package:pick_edit_datatable/widget/ComBtnImage.dart';
+import 'package:pick_edit_datatable/widget/ComInputText.dart';
 import 'package:pick_edit_datatable/widget/ComYNPopup.dart';
 
 import 'datatap4/datatap4.dart';
 import 'modelintable.dart';
 
+int ListTable4Status = 0;
+
 class DataListTable4 extends StatefulWidget {
-  const DataListTable4({Key? key, required this.datainput}) : super(key: key);
+  DataListTable4(
+      {Key? key, required this.datainput, required this.dropdowndata})
+      : super(key: key);
   final List<MainStrucTableTap4> datainput;
+  DropDownData dropdowndata;
+
   @override
   _DataListTable4State createState() => _DataListTable4State();
 }
@@ -137,9 +152,23 @@ class _DataListTable4State extends State<DataListTable4> {
 
     //------------------------------------------------------------------------------------------------
 
-    void _tapView() {
+    void _tapView(MainStrucTableTap4 s) {
+      ListTable4Status = 1;
       //click all
-      print("123");
+      // print("123");
+      EditDataTable4 = s;
+      EditDataTable4buffer = s;
+      undercontroltap4 = true;
+      CustFull = s.field02;
+      FrequencyRequest = s.field06;
+      Incharge = s.field07;
+      SubLeader = s.field08;
+      GL = s.field09;
+      JP = s.field10;
+      DMG = s.field11;
+
+      context.read<FetchDataTable4Bloc>().add(DataSequncePage4.select);
+      ConsoleBox(s, context, widget.dropdowndata);
     }
 
     void _CallYNPopup(
@@ -189,8 +218,19 @@ class _DataListTable4State extends State<DataListTable4> {
       // _CallYNPopup('Edit ${s}', 'Do you want to Edit ${s} now?', 'Yes', 'No',
       //     _Edit, _CloseYNPopup, s, false);
       EditDataTable4 = s;
+      EditDataTable4buffer = s;
       undercontroltap4 = true;
-      BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+      CustFull = s.field02;
+      FrequencyRequest = s.field06;
+      Incharge = s.field07;
+      SubLeader = s.field08;
+      GL = s.field09;
+      JP = s.field10;
+      DMG = s.field11;
+
+      context.read<FetchDataTable4Bloc>().add(DataSequncePage4.select);
+      ConsoleBox(s, context, widget.dropdowndata);
+      // BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
     }
 
     void _tapDelete(MainStrucTableTap4 s) {
@@ -206,6 +246,7 @@ class _DataListTable4State extends State<DataListTable4> {
       DeleteDataTable4buffer.field09 = s.field09;
       DeleteDataTable4buffer.field10 = s.field10;
       DeleteDataTable4buffer.field11 = s.field11;
+      DeleteDataTable4buffer.field12 = s.field12;
 
       _CallYNPopup(
           'Delete ${s.number}',
@@ -234,41 +275,100 @@ class _DataListTable4State extends State<DataListTable4> {
     //fixed error when sort the hide column on mobile
     // nCurrentSortIndex = 0;
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: DataTable(
-        sortColumnIndex: nCurrentSortIndex,
-        sortAscending: isSortAscending,
-        showCheckboxColumn:
-            false, //Hide checkbox that come from tap row 'onselectchanged'
-        columnSpacing: 10,
-        dataRowHeight: 56,
-        // Header Column -----------------------------------------------------------
-        columns: [
-          _getDataColumn(1, "NO", 'Sort Field 1', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              2, "CustId", 'Sort Field 2', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              3, "CustFull", 'Sort Field 3', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              4, "CustShort", 'Sort Field 4', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              5, "Branch", 'Sort Field 5', nDataColumnWidth, tapSort),
-          _getDataColumn(6, "Code", 'Sort Field 6', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              7, "Freq-Req", 'Sort Field 7', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              8, "Incharge", 'Sort Field 8', nDataColumnWidth, tapSort),
-          _getDataColumn(
-              9, "SubLeader", 'Sort Field 9', nDataColumnWidth, tapSort),
-          _getDataColumn(10, "GL", 'Sort Field 10', nDataColumnWidth, tapSort),
-          _getDataColumn(11, "JP", 'Sort Field 11', nDataColumnWidth, tapSort),
-          _getDataColumn(11, "DMG", 'Sort Field 11', nDataColumnWidth, tapSort),
-          _getBlankDataColumn(nDataColumnWidthIcon),
-        ],
-        // Cell Row  -----------------------------------------------------------
-        rows: [
-          for (DataRow dataRow in RowDataInput) dataRow,
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(
+        dragDevices: {
+          PointerDeviceKind.touch,
+          PointerDeviceKind.mouse,
+        },
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                height: 30,
+                // color: Colors.red,
+                child: ComBtnBlackBorder(
+                    sLabel: "New",
+                    func: () {
+                      ListTable4Status = 0;
+                      MainStrucTableTap4 Zerodata = MainStrucTableTap4(
+                        number: "",
+                        field01: "",
+                        field02: "",
+                        field03: "",
+                        field04: "",
+                        field05: "",
+                        field06: "",
+                        field07: "",
+                        field08: "",
+                        field09: "",
+                        field10: "",
+                        field11: "",
+                        field12: "",
+                      );
+                      CustFull = '';
+                      FrequencyRequest = '';
+                      Incharge = '';
+                      SubLeader = '';
+                      GL = '';
+                      JP = '';
+                      DMG = '';
+                      BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+                      ConsoleBox(Zerodata, context, widget.dropdowndata);
+                    },
+                    nWidth: 134),
+              ),
+              // SizedBox(
+              //   width: 100,
+              // ),
+            ],
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+              sortColumnIndex: nCurrentSortIndex,
+              sortAscending: isSortAscending,
+              showCheckboxColumn:
+                  false, //Hide checkbox that come from tap row 'onselectchanged'
+              columnSpacing: 10,
+              dataRowHeight: 56,
+              // Header Column -----------------------------------------------------------
+              columns: [
+                _getDataColumn(
+                    1, "NO", 'Sort Field 1', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    2, "CustId", 'Sort Field 2', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    3, "CustFull", 'Sort Field 3', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    4, "CustShort", 'Sort Field 4', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    5, "Branch", 'Sort Field 5', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    6, "Code", 'Sort Field 6', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    7, "Freq-Req", 'Sort Field 7', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    8, "Incharge", 'Sort Field 8', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    9, "SubLeader", 'Sort Field 9', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    10, "GL", 'Sort Field 10', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    11, "JP", 'Sort Field 11', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    11, "DMG", 'Sort Field 11', nDataColumnWidth, tapSort),
+                _getBlankDataColumn(nDataColumnWidthIcon),
+              ],
+              // Cell Row  -----------------------------------------------------------
+              rows: [
+                for (DataRow dataRow in RowDataInput) dataRow,
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -396,9 +496,9 @@ DataRow _getDataRow(
             nDataWidthIcon, nMarginToMakeIconSmaller, getData),
       ],
       onSelectChanged: (value) {
-        // funcView(number);
+        funcView(getData);
         // print(value);
-        print(number);
+        // print(number);
       });
 }
 
@@ -457,16 +557,16 @@ DataCell _getDataCell_Icon(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
-            width: nDataWidthIcon,
-            height: 100,
-            // color: Colors.blue,
-            child: ComBtnImage(
-              sImgPath: Icons.edit,
-              func: _tapEdit,
-              nMarginToMakeIconSmaller: nMarginToMakeIconSmaller,
-            ),
-          ),
+          // Container(
+          //   width: nDataWidthIcon,
+          //   height: 100,
+          //   // color: Colors.blue,
+          //   child: ComBtnImage(
+          //     sImgPath: Icons.edit,
+          //     func: _tapEdit,
+          //     nMarginToMakeIconSmaller: nMarginToMakeIconSmaller,
+          //   ),
+          // ),
           Container(
             width: nDataWidthIcon,
             height: 100,
@@ -480,4 +580,420 @@ DataCell _getDataCell_Icon(
       ),
     ),
   );
+}
+
+void ConsoleBox(MainStrucTableTap4 input, BuildContext contextinput,
+    DropDownData dropdowndata) {
+  showDialog(
+    context: contextinput,
+    barrierDismissible: true,
+    builder: (BuildContext context) {
+      DropDownData _datadropdown = dropdowndata;
+
+      List<String> _list1 = _datadropdown.list01;
+      List<String> _list2 = _datadropdown.list02;
+      List<String> _list3 = _datadropdown.list03;
+      List<String> _list4 = _datadropdown.list04;
+      List<String> _list5 = _datadropdown.list05;
+      List<String> _list6 = _datadropdown.list06;
+      List<String> _list7 = _datadropdown.list07;
+      return Container(
+        // color: Colors.blue,
+        child: Dialog(
+          child: Container(
+              // height: 500,
+              // width: 800,
+              color: Colors.white,
+              child: Padding(
+                padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: CustomTheme.colorGreyBg,
+                    borderRadius: BorderRadius.all(Radius.circular(24)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: CustomTheme.colorShadowBgStrong,
+                          offset: Offset(0, 0),
+                          blurRadius: 10,
+                          spreadRadius: 0)
+                    ],
+                  ),
+                  width: 1000,
+                  height: 420,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            Column(
+                              children: [
+                                Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Container(
+                                    width: 460,
+                                    height: 30,
+                                    // color: Colors.blue,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width: 400,
+                                  height: 40,
+                                  // color: Colors.red,
+                                  child: ComInputText(
+                                    isContr: undercontroltap4,
+                                    fnContr: (input) {
+                                      undercontroltap4 = input;
+                                    },
+                                    sValue: EditDataTable4.number,
+                                    returnfunc: () {},
+                                    isEnabled: false,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  width: 400,
+                                  height: 40,
+                                  // color: Colors.red,
+                                  child: ComInputText(
+                                      isEnabled: false,
+                                      isContr: undercontroltap4,
+                                      fnContr: (input) {
+                                        undercontroltap4 = input;
+                                      },
+                                      sValue: EditDataTable4.field01,
+                                      returnfunc: (String s) {
+                                        EditDataTable4buffer.field01 = s;
+                                      }),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                AdvanceDropDown(
+                                  width: 400,
+                                  height: 40,
+                                  value: CustFull,
+                                  onChangeinside: (newValue) {
+                                    CustFull = newValue!;
+
+                                    EditDataTable4buffer.field02 = newValue;
+                                    undercontroltap4 = true;
+                                    _onLoading(
+                                        contextinput,
+                                        contextinput
+                                            .read<CallDropdowndata>()
+                                            .add(calldropdownrequrst.set04_1));
+
+                                    BlocProvider.of<BlocPageRebuild>(
+                                            contextinput)
+                                        .rebuildPage();
+                                  },
+                                  listdropdown: _list1,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  width: 400,
+                                  height: 40,
+                                  // color: Colors.red,
+                                  child: ComInputText(
+                                    isEnabled: false,
+                                    isContr: undercontroltap4,
+                                    fnContr: (input) {
+                                      undercontroltap4 = input;
+                                    },
+                                    sValue: EditDataTable4.field03,
+                                    returnfunc: (String s) {
+                                      EditDataTable4buffer.field03 = s;
+                                    },
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  width: 400,
+                                  height: 40,
+                                  // color: Colors.red,
+                                  child: ComInputText(
+                                    isEnabled: false,
+                                    isContr: undercontroltap4,
+                                    fnContr: (input) {
+                                      undercontroltap4 = input;
+                                    },
+                                    sValue: EditDataTable4.field04,
+                                    returnfunc: (String s) {
+                                      EditDataTable4buffer.field04 = s;
+                                    },
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  width: 400,
+                                  height: 40,
+                                  // color: Colors.red,
+                                  child: ComInputText(
+                                    isEnabled: false,
+                                    isContr: undercontroltap4,
+                                    fnContr: (input) {
+                                      undercontroltap4 = input;
+                                    },
+                                    sValue: EditDataTable4.field05,
+                                    returnfunc: (String s) {
+                                      EditDataTable4buffer.field05 = s;
+                                    },
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                AdvanceDropDown(
+                                  width: 400,
+                                  height: 40,
+                                  value: FrequencyRequest,
+                                  onChangeinside: (newValue) {
+                                    FrequencyRequest = newValue!;
+                                    EditDataTable4buffer.field06 = newValue;
+                                    BlocProvider.of<BlocPageRebuild>(
+                                            contextinput)
+                                        .rebuildPage();
+                                  },
+                                  listdropdown: _list2,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Container(
+                                    width: 460,
+                                    height: 30,
+                                    // color: Colors.blue,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                AdvanceDropDown(
+                                  width: 400,
+                                  height: 40,
+                                  value: Incharge,
+                                  onChangeinside: (newValue) {
+                                    Incharge = newValue!;
+                                    EditDataTable4buffer.field07 = newValue;
+                                    BlocProvider.of<BlocPageRebuild>(
+                                            contextinput)
+                                        .rebuildPage();
+                                  },
+                                  listdropdown: _list3,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                AdvanceDropDown(
+                                  width: 400,
+                                  height: 40,
+                                  value: SubLeader,
+                                  onChangeinside: (newValue) {
+                                    SubLeader = newValue!;
+                                    EditDataTable4buffer.field08 = newValue;
+                                    BlocProvider.of<BlocPageRebuild>(
+                                            contextinput)
+                                        .rebuildPage();
+                                  },
+                                  listdropdown: _list4,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                AdvanceDropDown(
+                                  width: 400,
+                                  height: 40,
+                                  value: GL,
+                                  onChangeinside: (newValue) {
+                                    GL = newValue!;
+                                    EditDataTable4buffer.field09 = newValue;
+                                    BlocProvider.of<BlocPageRebuild>(
+                                            contextinput)
+                                        .rebuildPage();
+                                  },
+                                  listdropdown: _list5,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                AdvanceDropDown(
+                                  width: 400,
+                                  height: 40,
+                                  value: JP,
+                                  onChangeinside: (newValue) {
+                                    JP = newValue!;
+                                    EditDataTable4buffer.field10 = newValue;
+                                    BlocProvider.of<BlocPageRebuild>(
+                                            contextinput)
+                                        .rebuildPage();
+                                  },
+                                  listdropdown: _list6,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                AdvanceDropDown(
+                                  width: 400,
+                                  height: 40,
+                                  value: DMG,
+                                  onChangeinside: (newValue) {
+                                    DMG = newValue!;
+                                    EditDataTable4buffer.field11 = newValue;
+                                    BlocProvider.of<BlocPageRebuild>(
+                                            contextinput)
+                                        .rebuildPage();
+                                  },
+                                  listdropdown: _list7,
+                                ),
+                                Container(
+                                  width: 400,
+                                  height: 40,
+                                  // color: Colors.red,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width: 400,
+                                  height: 40,
+                                  // color: Colors.red,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            width: 460,
+                            height: 40,
+                            // color: Colors.blue,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (ListTable4Status == 1)
+                                  ComBtnBlack(
+                                      sLabel: "Save",
+                                      func: () {
+                                        // EditDataTable4buffer = EditDataTable4;
+                                        contextinput
+                                            .read<FetchDataTable4Bloc>()
+                                            .add(DataSequncePage4
+                                                .update); //<------------------
+                                      },
+                                      nWidth: 134),
+                                ComBtnBlackBorder(
+                                    sLabel: "New",
+                                    func: () {
+                                      contextinput
+                                          .read<FetchDataTable4Bloc>()
+                                          .add(DataSequncePage4.insert);
+                                    },
+                                    nWidth: 134),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                ComBtnBlackBorder(
+                                    sLabel: "Cancle",
+                                    cBg: Colors.red,
+                                    func: () {
+                                      undercontroltap4 = true;
+                                      EditDataTable4 = MainStrucTableTap4(
+                                        number: "",
+                                        field01: "",
+                                        field02: "",
+                                        field03: "",
+                                        field04: "",
+                                        field05: "",
+                                        field06: "",
+                                        field07: "",
+                                        field08: "",
+                                        field09: "",
+                                        field10: "",
+                                        field11: "",
+                                        field12: "",
+                                      );
+                                      BlocProvider.of<BlocPageRebuild>(
+                                              contextinput)
+                                          .rebuildPage();
+                                    },
+                                    nWidth: 134),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )),
+        ),
+      );
+    },
+  );
+}
+
+class TxtStylePOP extends TextStyle {
+  final Color color;
+  final FontWeight fontWeight;
+  final double fontSize;
+  final String fontFamily = 'Mitr';
+  final FontStyle fontStyle = FontStyle.normal;
+
+  const TxtStylePOP(
+      {this.fontSize = 12,
+      this.color = Colors.black,
+      this.fontWeight = FontWeight.normal})
+      : super();
+}
+
+void _onLoading(BuildContext contextin, void newValue) {
+  showDialog(
+    context: contextin,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      newValue;
+      return Container(
+        // color: Colors.red,
+
+        child: Dialog(
+          child: Container(
+              height: 75,
+              child: new Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(width: 30),
+                  new CircularProgressIndicator(),
+                  SizedBox(width: 20),
+                  new Text("Loading"),
+                ],
+              )),
+        ),
+      );
+    },
+  );
+
+  Timer(Duration(seconds: 1), () {
+    BlocProvider.of<BlocPageRebuild>(contextin).rebuildPage();
+    Navigator.pop(contextin);
+  });
 }

@@ -11,16 +11,17 @@ class MainStrucTableTap6 {
   String field09 = '';
   String field10 = '';
 
-  MainStrucTableTap6(
-      {required this.number,
-      required this.field01,
-      required this.field02,
-      required this.field03,
-      required this.field04,
-      required this.field05,
-      required this.field06,
-      required this.field07,
-      required this.field08,
-      required this.field09,
-      required this.field10});
+  MainStrucTableTap6({
+    required this.number,
+    required this.field01,
+    required this.field02,
+    required this.field03,
+    required this.field04,
+    required this.field05,
+    required this.field06,
+    required this.field07,
+    required this.field08,
+    required this.field09,
+    required this.field10,
+  });
 }

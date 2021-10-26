@@ -81,3 +81,16 @@ enum DataSequncePage12 {
   delete,
   insert,
 }
+
+enum dropdownrequrst {
+  set04,
+  set06,
+  set07,
+  set10,
+  set11,
+  set12,
+}
+
+enum calldropdownrequrst {
+  set04_1,
+}

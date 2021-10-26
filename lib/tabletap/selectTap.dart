@@ -22,7 +22,6 @@ class TapMainBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
     return Align(
         alignment: Alignment.topCenter,
         child: Container(
