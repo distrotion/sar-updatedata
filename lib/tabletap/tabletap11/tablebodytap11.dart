@@ -776,6 +776,13 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                                           InstrumentName11 = newValue!;
                                           EditDataTable11buffer.field02 =
                                               newValue;
+                                          undercontroltap11 = true;
+                                          _onLoading(
+                                              contextinput,
+                                              contextinput
+                                                  .read<CallDropdowndata>()
+                                                  .add(calldropdownrequrst
+                                                      .set11_1));
                                           BlocProvider.of<BlocPageRebuild>(
                                                   contextinput)
                                               .rebuildPage();
@@ -1127,13 +1134,6 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                                           EditDataTable11buffer.field14 =
                                               newValue;
 
-                                          undercontroltap11 = true;
-                                          _onLoading(
-                                              contextinput,
-                                              contextinput
-                                                  .read<CallDropdowndata>()
-                                                  .add(calldropdownrequrst
-                                                      .set11_1));
                                           BlocProvider.of<BlocPageRebuild>(
                                                   contextinput)
                                               .rebuildPage();

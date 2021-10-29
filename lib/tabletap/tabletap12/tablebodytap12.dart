@@ -736,7 +736,7 @@ void _ConsoleBox(MainStrucTableTap12 input, BuildContext contextinput,
                                                     contextinput)
                                                 .rebuildPage();
                                           },
-                                          listdropdown: _list1,
+                                          listdropdown: _list2,
                                         ),
                                       ],
                                     ),
@@ -805,7 +805,7 @@ void _ConsoleBox(MainStrucTableTap12 input, BuildContext contextinput,
                                                     contextinput)
                                                 .rebuildPage();
                                           },
-                                          listdropdown: _list1,
+                                          listdropdown: _list3,
                                         ),
                                         SizedBox(
                                           height: 5,
@@ -862,7 +862,7 @@ void _ConsoleBox(MainStrucTableTap12 input, BuildContext contextinput,
                                                     contextinput)
                                                 .rebuildPage();
                                           },
-                                          listdropdown: _list1,
+                                          listdropdown: _list4,
                                         ),
                                       ],
                                     )

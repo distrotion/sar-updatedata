@@ -2979,9 +2979,13 @@ Stream<DropDownData> set_12(DropDownData state) async* {
     for (var i = 0; i < data_input['list02'].length; i++) {
       state.list02.add(data_input['list02'][i]);
     }
+    for (var i = 0; i < data_input['list03'].length; i++) {
+      state.list03.add(data_input['list03'][i]);
+    }
+    for (var i = 0; i < data_input['list04'].length; i++) {
+      state.list04.add(data_input['list04'][i]);
+    }
 
-    state.list03 = [];
-    state.list04 = [];
     state.list05 = [];
     state.list06 = [];
     state.list07 = [];
@@ -3122,8 +3126,8 @@ Stream<CallDropDownDataS> set_07_1(CallDropDownDataS state) async* {
     var databuff = jsonDecode(response.body);
     data_input = databuff[0]['output'];
     print(data_input);
-    EditDataTable6.field01 = data_input['data02'];
-    EditDataTable6buffer.field01 = data_input['data02'];
+    EditDataTable7.field01 = data_input['data02'];
+    EditDataTable7buffer.field01 = data_input['data02'];
   } else {
     data_input = '';
     print("where is my server");
