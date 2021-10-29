@@ -93,4 +93,13 @@ enum dropdownrequrst {
 
 enum calldropdownrequrst {
   set04_1,
+  set06_1,
+  set07_1,
+  set07_2,
+  set10_1,
+  set11_1,
+  set12_1,
+  set12_2,
+  set12_3,
+  set12_4,
 }

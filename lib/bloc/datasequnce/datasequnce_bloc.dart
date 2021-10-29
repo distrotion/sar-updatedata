@@ -424,6 +424,7 @@ Stream<List<MainStrucTableTap2>> InsertData2_fn(
 
   final response_init = await http
       .post(Uri.parse(server + "Customer_Data_insert"), body: input_init);
+
   //------------------------------------------------------------------------------
 
   String input = "hi data";
@@ -2293,7 +2294,7 @@ Stream<List<MainStrucTableTap11>> InsertData11_fn(
     List<MainStrucTableTap11> state) async* {
   print("INSERT FUNCTION BLOC 11");
   var input_init = {
-    "Id": EditDataTable11buffer.number,
+    "Id": 'insert',
     "InstrumentId": EditDataTable11buffer.field01,
     "InstrumentName": EditDataTable11buffer.field02,
     "ItemId": EditDataTable11buffer.field03,
@@ -2954,7 +2955,7 @@ Stream<DropDownData> set_12(DropDownData state) async* {
   if (response.statusCode == 200) {
     var databuff = jsonDecode(response.body);
     data_input = databuff[0]['output'];
-    // print(data_input);
+    print(data_input);
   } else {
     data_input = '';
     print("where is my server");
@@ -2980,10 +2981,24 @@ Stream<DropDownData> set_12(DropDownData state) async* {
     }
 
     state.list03 = [];
+    state.list04 = [];
+    state.list05 = [];
+    state.list06 = [];
+    state.list07 = [];
+    state.list08 = [];
+    state.list09 = [];
+    state.list10 = [];
   } else {
     state.list01 = [];
     state.list02 = [];
     state.list03 = [];
+    state.list04 = [];
+    state.list05 = [];
+    state.list06 = [];
+    state.list07 = [];
+    state.list08 = [];
+    state.list09 = [];
+    state.list10 = [];
   }
   yield state;
 }
@@ -3035,6 +3050,24 @@ class CallDropdowndata extends Bloc<calldropdownrequrst, CallDropDownDataS> {
   Stream<CallDropDownDataS> mapEventToState(calldropdownrequrst event) async* {
     if (event == calldropdownrequrst.set04_1) {
       yield* set_04_1(state);
+    } else if (event == calldropdownrequrst.set06_1) {
+      yield* set_06_1(state);
+    } else if (event == calldropdownrequrst.set07_1) {
+      yield* set_07_1(state);
+    } else if (event == calldropdownrequrst.set07_2) {
+      yield* set_07_2(state);
+    } else if (event == calldropdownrequrst.set10_1) {
+      yield* set_10_1(state);
+    } else if (event == calldropdownrequrst.set11_1) {
+      yield* set_11_1(state);
+    } else if (event == calldropdownrequrst.set12_1) {
+      yield* set_12_1(state);
+    } else if (event == calldropdownrequrst.set12_2) {
+      yield* set_12_2(state);
+    } else if (event == calldropdownrequrst.set12_3) {
+      yield* set_12_3(state);
+    } else if (event == calldropdownrequrst.set12_4) {
+      yield* set_12_4(state);
     }
   }
 }
@@ -3055,18 +3088,168 @@ Stream<CallDropDownDataS> set_04_1(CallDropDownDataS state) async* {
     EditDataTable4buffer.field03 = data_input['data02'];
     EditDataTable4buffer.field04 = data_input['data03'];
     EditDataTable4buffer.field05 = data_input['data04'];
-    // dataTable1in = data_input['data01'];
-    // dataTable3in = data_input['data02'];
-    // dataTable4in = data_input['data03'];
-    // dataTable5in = data_input['data04'];
-    // EditDataTable4buffer.field01 = 'AAA';
-    // EditDataTable4buffer.field03 = 'AAA';
-    // EditDataTable4buffer.field04 = 'AAA';
-    // EditDataTable4buffer.field05 = 'AAA';
-    // state.data01 = data_input['data01'];
-    // state.data02 = data_input['data02'];
-    // state.data03 = data_input['data03'];
-    // state.data04 = data_input['data04'];
+  } else {
+    data_input = '';
+    print("where is my server");
+  }
+
+  yield state;
+}
+
+Stream<CallDropDownDataS> set_06_1(CallDropDownDataS state) async* {
+  final response = await http.post(Uri.parse(server + "set_06_1call"),
+      body: {"Qurey": EditDataTable6buffer.field02});
+  var data_input;
+  if (response.statusCode == 200) {
+    var databuff = jsonDecode(response.body);
+    data_input = databuff[0]['output'];
+    print(data_input);
+    EditDataTable6.field01 = data_input['data02'];
+    EditDataTable6buffer.field01 = data_input['data02'];
+  } else {
+    data_input = '';
+    print("where is my server");
+  }
+
+  yield state;
+}
+
+Stream<CallDropDownDataS> set_07_1(CallDropDownDataS state) async* {
+  final response = await http.post(Uri.parse(server + "set_07_1call"),
+      body: {"Qurey": EditDataTable7buffer.field02});
+  var data_input;
+  if (response.statusCode == 200) {
+    var databuff = jsonDecode(response.body);
+    data_input = databuff[0]['output'];
+    print(data_input);
+    EditDataTable6.field01 = data_input['data02'];
+    EditDataTable6buffer.field01 = data_input['data02'];
+  } else {
+    data_input = '';
+    print("where is my server");
+  }
+
+  yield state;
+}
+
+Stream<CallDropDownDataS> set_07_2(CallDropDownDataS state) async* {
+  final response = await http.post(Uri.parse(server + "set_07_2call"),
+      body: {"Qurey": EditDataTable7buffer.field04});
+  var data_input;
+  if (response.statusCode == 200) {
+    var databuff = jsonDecode(response.body);
+    data_input = databuff[0]['output'];
+    print(data_input);
+    EditDataTable7.field03 = data_input['data04'];
+    EditDataTable7buffer.field03 = data_input['data04'];
+  } else {
+    data_input = '';
+    print("where is my server");
+  }
+
+  yield state;
+}
+
+Stream<CallDropDownDataS> set_10_1(CallDropDownDataS state) async* {
+  final response = await http.post(Uri.parse(server + "set_10_1call"),
+      body: {"Qurey": EditDataTable10buffer.field02});
+  var data_input;
+  if (response.statusCode == 200) {
+    var databuff = jsonDecode(response.body);
+    data_input = databuff[0]['output'];
+    print(data_input);
+    EditDataTable10.field01 = data_input['data02'];
+    EditDataTable10buffer.field01 = data_input['data02'];
+  } else {
+    data_input = '';
+    print("where is my server");
+  }
+
+  yield state;
+}
+
+Stream<CallDropDownDataS> set_11_1(CallDropDownDataS state) async* {
+  final response = await http.post(Uri.parse(server + "set_11_1call"),
+      body: {"Qurey": EditDataTable11buffer.field02});
+  var data_input;
+  if (response.statusCode == 200) {
+    var databuff = jsonDecode(response.body);
+    data_input = databuff[0]['output'];
+    print(data_input);
+    EditDataTable11.field01 = data_input['data02'];
+    EditDataTable11buffer.field01 = data_input['data02'];
+  } else {
+    data_input = '';
+    print("where is my server");
+  }
+
+  yield state;
+}
+
+Stream<CallDropDownDataS> set_12_1(CallDropDownDataS state) async* {
+  final response = await http.post(Uri.parse(server + "set_12_1call"),
+      body: {"Qurey": EditDataTable12buffer.field02});
+  var data_input;
+  if (response.statusCode == 200) {
+    var databuff = jsonDecode(response.body);
+    data_input = databuff[0]['output'];
+    print(data_input);
+    EditDataTable12.field01 = data_input['data02'];
+    EditDataTable12buffer.field01 = data_input['data02'];
+  } else {
+    data_input = '';
+    print("where is my server");
+  }
+
+  yield state;
+}
+
+Stream<CallDropDownDataS> set_12_2(CallDropDownDataS state) async* {
+  final response = await http.post(Uri.parse(server + "set_12_2call"),
+      body: {"Qurey": EditDataTable12buffer.field04});
+  var data_input;
+  if (response.statusCode == 200) {
+    var databuff = jsonDecode(response.body);
+    data_input = databuff[0]['output'];
+    print(data_input);
+    EditDataTable12.field03 = data_input['data04'];
+    EditDataTable12buffer.field03 = data_input['data04'];
+  } else {
+    data_input = '';
+    print("where is my server");
+  }
+
+  yield state;
+}
+
+Stream<CallDropDownDataS> set_12_3(CallDropDownDataS state) async* {
+  final response = await http.post(Uri.parse(server + "set_12_3call"),
+      body: {"Qurey": EditDataTable12buffer.field06});
+  var data_input;
+  if (response.statusCode == 200) {
+    var databuff = jsonDecode(response.body);
+    data_input = databuff[0]['output'];
+    print(data_input);
+    EditDataTable12.field05 = data_input['data02'];
+    EditDataTable12buffer.field05 = data_input['data02'];
+  } else {
+    data_input = '';
+    print("where is my server");
+  }
+
+  yield state;
+}
+
+Stream<CallDropDownDataS> set_12_4(CallDropDownDataS state) async* {
+  final response = await http.post(Uri.parse(server + "set_12_4call"),
+      body: {"Qurey": EditDataTable12buffer.field08});
+  var data_input;
+  if (response.statusCode == 200) {
+    var databuff = jsonDecode(response.body);
+    data_input = databuff[0]['output'];
+    print(data_input);
+    EditDataTable12.field07 = data_input['data04'];
+    EditDataTable12buffer.field07 = data_input['data04'];
   } else {
     data_input = '';
     print("where is my server");

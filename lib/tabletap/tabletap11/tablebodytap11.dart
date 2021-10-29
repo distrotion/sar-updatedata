@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -6,16 +7,27 @@ import 'package:pick_edit_datatable/bloc/BlocPageRebuild.dart';
 import 'package:pick_edit_datatable/bloc/datasequnce/datasequnce_bloc.dart';
 
 import 'package:pick_edit_datatable/bloc/datasequnce/datasequnce_event.dart';
+import 'package:pick_edit_datatable/style/style.dart';
+import 'package:pick_edit_datatable/widget/Advancedropdown.dart';
+import 'package:pick_edit_datatable/widget/ComBtnBlack.dart';
+import 'package:pick_edit_datatable/widget/ComBtnBlackBorder.dart';
 
 import 'package:pick_edit_datatable/widget/ComBtnImage.dart';
+import 'package:pick_edit_datatable/widget/ComInputText.dart';
 import 'package:pick_edit_datatable/widget/ComYNPopup.dart';
 
 import 'datatap11/datatap11.dart';
 import 'modelintable.dart';
+import 'tablestruc11.dart';
+
+int ListTable11Status = 0;
 
 class DataListTable11 extends StatefulWidget {
-  const DataListTable11({Key? key, required this.datainput}) : super(key: key);
+  DataListTable11(
+      {Key? key, required this.datainput, required this.dropdowndata})
+      : super(key: key);
   final List<MainStrucTableTap11> datainput;
+  DropDownData dropdowndata;
   @override
   _DataListTable11State createState() => _DataListTable11State();
 }
@@ -187,9 +199,15 @@ class _DataListTable11State extends State<DataListTable11> {
 
     //------------------------------------------------------------------------------------------------
 
-    void _tapView() {
+    void _tapView(MainStrucTableTap11 s) {
       //click all
-      print("123");
+      // print("123");
+      ListTable11Status = 1;
+      EditDataTable11 = s;
+      EditDataTable11buffer = s;
+
+      context.read<FetchDataTable11Bloc>().add(DataSequncePage11.select);
+      _ConsoleBox(s, context, widget.dropdowndata);
     }
 
     void _CallYNPopup(
@@ -298,57 +316,109 @@ class _DataListTable11State extends State<DataListTable11> {
           PointerDeviceKind.mouse,
         },
       ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          sortColumnIndex: nCurrentSortIndex,
-          sortAscending: isSortAscending,
-          showCheckboxColumn:
-              false, //Hide checkbox that come from tap row 'onselectchanged'
-          columnSpacing: 10,
-          dataRowHeight: 56,
-          // Header Column -----------------------------------------------------------
-          columns: [
-            _getDataColumn(1, "No", 'Sort Field 1', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                2, "Ins-Id", 'Sort Field 2', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                3, "Ins-Name", 'Sort Field 3', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                4, "ItemId", 'Sort Field 4', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                5, "ItemName", 'Sort Field 5', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                6, "Cost", 'Sort Field 6', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                7, "Price", 'Sort Field 7', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                8, "Unit-01", 'Sort Field 8', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                9, "Unit-02", 'Sort Field 9', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                10, "Unit-03", 'Sort Field 10', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                11, "Unit-04", 'Sort Field 11', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                12, "Unit-05", 'Sort Field 12', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                13, "Unit-06", 'Sort Field 13', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                14, "Unit-07", 'Sort Field 14', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                15, "Unit-08", 'Sort Field 15', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                16, "Unit-09", 'Sort Field 16', nDataColumnWidth, tapSort),
-            _getDataColumn(
-                17, "Unit-10", 'Sort Field 17', nDataColumnWidth, tapSort),
-            _getBlankDataColumn(nDataColumnWidthIcon),
-          ],
-          // Cell Row  -----------------------------------------------------------
-          rows: [
-            for (DataRow dataRow in RowDataInput) dataRow,
-          ],
-        ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                height: 30,
+                // color: Colors.red,
+                child: ComBtnBlackBorder(
+                    sLabel: "New",
+                    func: () {
+                      ListTable11Status = 0;
+                      MainStrucTableTap11 Zerodata = MainStrucTableTap11(
+                        number: "",
+                        field01: "",
+                        field02: "",
+                        field03: "",
+                        field04: "",
+                        field05: "",
+                        field06: "",
+                        field07: "",
+                        field08: "",
+                        field09: "",
+                        field10: "",
+                        field11: "",
+                        field12: "",
+                        field13: "",
+                        field14: "",
+                        field15: "",
+                        field16: "",
+                        field17: "",
+                      );
+                      // CustFull = '';
+                      // FrequencyRequest = '';
+                      // Incharge = '';
+                      // SubLeader = '';
+                      // GL = '';
+                      // JP = '';
+                      // DMG = '';
+                      BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+                      _ConsoleBox(Zerodata, context, widget.dropdowndata);
+                    },
+                    nWidth: 134),
+              ),
+              // SizedBox(
+              //   width: 100,
+              // ),
+            ],
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+              sortColumnIndex: nCurrentSortIndex,
+              sortAscending: isSortAscending,
+              showCheckboxColumn:
+                  false, //Hide checkbox that come from tap row 'onselectchanged'
+              columnSpacing: 10,
+              dataRowHeight: 56,
+              // Header Column -----------------------------------------------------------
+              columns: [
+                _getDataColumn(
+                    1, "No", 'Sort Field 1', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    2, "Ins-Id", 'Sort Field 2', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    3, "Ins-Name", 'Sort Field 3', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    4, "ItemId", 'Sort Field 4', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    5, "ItemName", 'Sort Field 5', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    6, "Cost", 'Sort Field 6', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    7, "Price", 'Sort Field 7', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    8, "Unit-01", 'Sort Field 8', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    9, "Unit-02", 'Sort Field 9', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    10, "Unit-03", 'Sort Field 10', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    11, "Unit-04", 'Sort Field 11', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    12, "Unit-05", 'Sort Field 12', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    13, "Unit-06", 'Sort Field 13', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    14, "Unit-07", 'Sort Field 14', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    15, "Unit-08", 'Sort Field 15', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    16, "Unit-09", 'Sort Field 16', nDataColumnWidth, tapSort),
+                _getDataColumn(
+                    17, "Unit-10", 'Sort Field 17', nDataColumnWidth, tapSort),
+                _getBlankDataColumn(nDataColumnWidthIcon),
+              ],
+              // Cell Row  -----------------------------------------------------------
+              rows: [
+                for (DataRow dataRow in RowDataInput) dataRow,
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -493,7 +563,8 @@ DataRow _getDataRow(
       onSelectChanged: (value) {
         // funcView(number);
         // print(value);
-        print(number);
+        // print(number);
+        funcView(getData);
       });
 }
 
@@ -552,16 +623,16 @@ DataCell _getDataCell_Icon(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
-            width: nDataWidthIcon,
-            height: 100,
-            // color: Colors.blue,
-            child: ComBtnImage(
-              sImgPath: Icons.edit,
-              func: _tapEdit,
-              nMarginToMakeIconSmaller: nMarginToMakeIconSmaller,
-            ),
-          ),
+          // Container(
+          //   width: nDataWidthIcon,
+          //   height: 100,
+          //   // color: Colors.blue,
+          //   child: ComBtnImage(
+          //     sImgPath: Icons.edit,
+          //     func: _tapEdit,
+          //     nMarginToMakeIconSmaller: nMarginToMakeIconSmaller,
+          //   ),
+          // ),
           Container(
             width: nDataWidthIcon,
             height: 100,
@@ -575,4 +646,718 @@ DataCell _getDataCell_Icon(
       ),
     ),
   );
+}
+
+void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
+    DropDownData dropdowndata) {
+  showDialog(
+    context: contextinput,
+    barrierDismissible: true,
+    builder: (BuildContext context) {
+      DropDownData _datadropdown = dropdowndata;
+      List<String> _list1 = _datadropdown.list01;
+      List<String> _list2 = _datadropdown.list02;
+
+      return Container(
+        // color: Colors.blue,
+        child: Dialog(
+          child: Container(
+              // height: 500,
+              // width: 800,
+              color: Colors.white,
+              child: Padding(
+                padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: CustomTheme.colorGreyBg,
+                    borderRadius: BorderRadius.all(Radius.circular(24)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: CustomTheme.colorShadowBgStrong,
+                          offset: Offset(0, 0),
+                          blurRadius: 10,
+                          spreadRadius: 0)
+                    ],
+                  ),
+                  width: 1000,
+                  height: 420,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: CustomTheme.colorGreyBg,
+                            borderRadius: BorderRadius.all(Radius.circular(24)),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: CustomTheme.colorShadowBgStrong,
+                                  offset: Offset(0, 0),
+                                  blurRadius: 10,
+                                  spreadRadius: 0)
+                            ],
+                          ),
+                          width: 1200,
+                          height: 450,
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Container(
+                                          width: 350,
+                                          height: 50,
+                                          color: Colors.blue,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        width: 300,
+                                        height: 40,
+                                        // color: Colors.red,
+                                        child: ComInputText(
+                                          isContr: undercontroltap11,
+                                          fnContr: (input) {
+                                            undercontroltap11 = input;
+                                          },
+                                          sValue: EditDataTable11.number,
+                                          returnfunc: () {},
+                                          isEnabled: false,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        width: 300,
+                                        height: 40,
+                                        // color: Colors.red,
+                                        child: ComInputText(
+                                            isContr: undercontroltap11,
+                                            fnContr: (input) {
+                                              undercontroltap11 = input;
+                                            },
+                                            sValue: EditDataTable11.field01,
+                                            returnfunc: (String s) {
+                                              EditDataTable11buffer.field01 = s;
+                                            }),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //     isContr: undercontroltap11,
+                                      //     fnContr: (input) {
+                                      //       undercontroltap11 = input;
+                                      //     },
+                                      //     sValue: EditDataTable11.field02,
+                                      //     returnfunc: (String s) {
+                                      //       EditDataTable11buffer.field02 = s;
+                                      //     },
+                                      //   ),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: InstrumentName11,
+                                        onChangeinside: (newValue) {
+                                          InstrumentName11 = newValue!;
+                                          EditDataTable11buffer.field02 =
+                                              newValue;
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        width: 300,
+                                        height: 40,
+                                        // color: Colors.red,
+                                        child: ComInputText(
+                                          isContr: undercontroltap11,
+                                          fnContr: (input) {
+                                            undercontroltap11 = input;
+                                          },
+                                          sValue: EditDataTable11.field03,
+                                          returnfunc: (String s) {
+                                            EditDataTable11buffer.field03 = s;
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        width: 300,
+                                        height: 40,
+                                        // color: Colors.red,
+                                        child: ComInputText(
+                                          isContr: undercontroltap11,
+                                          fnContr: (input) {
+                                            undercontroltap11 = input;
+                                          },
+                                          sValue: EditDataTable11.field04,
+                                          returnfunc: (String s) {
+                                            EditDataTable11buffer.field04 = s;
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        width: 300,
+                                        height: 40,
+                                        // color: Colors.red,
+                                        child: ComInputText(
+                                          isContr: undercontroltap11,
+                                          fnContr: (input) {
+                                            undercontroltap11 = input;
+                                          },
+                                          sValue: EditDataTable11.field05,
+                                          returnfunc: (String s) {
+                                            EditDataTable11buffer.field05 = s;
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        width: 300,
+                                        height: 40,
+                                        // color: Colors.red,
+                                        child: ComInputText(
+                                          isContr: undercontroltap11,
+                                          fnContr: (input) {
+                                            undercontroltap11 = input;
+                                          },
+                                          sValue: EditDataTable11.field06,
+                                          returnfunc: (String s) {
+                                            EditDataTable11buffer.field06 = s;
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Container(
+                                          width: 350,
+                                          height: 50,
+                                          color: Colors.blue,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //       isContr: undercontroltap11,
+                                      //       fnContr: (input) {
+                                      //         undercontroltap11 = input;
+                                      //       },
+                                      //       sValue: EditDataTable11.field07,
+                                      //       returnfunc: (String s) {
+                                      //         EditDataTable11buffer.field07 = s;
+                                      //       }),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: Unit01_11,
+                                        onChangeinside: (newValue) {
+                                          Unit01_11 = newValue!;
+                                          EditDataTable11buffer.field07 =
+                                              newValue;
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //     isContr: undercontroltap11,
+                                      //     fnContr: (input) {
+                                      //       undercontroltap11 = input;
+                                      //     },
+                                      //     sValue: EditDataTable11.field08,
+                                      //     returnfunc: (String s) {
+                                      //       EditDataTable11buffer.field08 = s;
+                                      //     },
+                                      //   ),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: Unit02_11,
+                                        onChangeinside: (newValue) {
+                                          Unit02_11 = newValue!;
+                                          EditDataTable11buffer.field08 =
+                                              newValue;
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //     isContr: undercontroltap11,
+                                      //     fnContr: (input) {
+                                      //       undercontroltap11 = input;
+                                      //     },
+                                      //     sValue: EditDataTable11.field09,
+                                      //     returnfunc: (String s) {
+                                      //       EditDataTable11buffer.field09 = s;
+                                      //     },
+                                      //   ),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: Unit03_11,
+                                        onChangeinside: (newValue) {
+                                          Unit03_11 = newValue!;
+                                          EditDataTable11buffer.field09 =
+                                              newValue;
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //     isContr: undercontroltap11,
+                                      //     fnContr: (input) {
+                                      //       undercontroltap11 = input;
+                                      //     },
+                                      //     sValue: EditDataTable11.field10,
+                                      //     returnfunc: (String s) {
+                                      //       EditDataTable11buffer.field10 = s;
+                                      //     },
+                                      //   ),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: Unit04_11,
+                                        onChangeinside: (newValue) {
+                                          Unit04_11 = newValue!;
+                                          EditDataTable11buffer.field10 =
+                                              newValue;
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //     isContr: undercontroltap11,
+                                      //     fnContr: (input) {
+                                      //       undercontroltap11 = input;
+                                      //     },
+                                      //     sValue: EditDataTable11.field11,
+                                      //     returnfunc: (String s) {
+                                      //       EditDataTable11buffer.field11 = s;
+                                      //     },
+                                      //   ),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: Unit05_11,
+                                        onChangeinside: (newValue) {
+                                          Unit05_11 = newValue!;
+                                          EditDataTable11buffer.field11 =
+                                              newValue;
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //     isContr: undercontroltap11,
+                                      //     fnContr: (input) {
+                                      //       undercontroltap11 = input;
+                                      //     },
+                                      //     sValue: EditDataTable11.field12,
+                                      //     returnfunc: (String s) {
+                                      //       EditDataTable11buffer.field12 = s;
+                                      //     },
+                                      //   ),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: Unit06_11,
+                                        onChangeinside: (newValue) {
+                                          Unit06_11 = newValue!;
+                                          EditDataTable11buffer.field12 =
+                                              newValue;
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //     isContr: undercontroltap11,
+                                      //     fnContr: (input) {
+                                      //       undercontroltap11 = input;
+                                      //     },
+                                      //     sValue: EditDataTable11.field13,
+                                      //     returnfunc: (String s) {
+                                      //       EditDataTable11buffer.field13 = s;
+                                      //     },
+                                      //   ),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: Unit07_11,
+                                        onChangeinside: (newValue) {
+                                          Unit07_11 = newValue!;
+                                          EditDataTable11buffer.field13 =
+                                              newValue;
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Container(
+                                          width: 350,
+                                          height: 50,
+                                          color: Colors.blue,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //       isContr: undercontroltap11,
+                                      //       fnContr: (input) {
+                                      //         undercontroltap11 = input;
+                                      //       },
+                                      //       sValue: EditDataTable11.field14,
+                                      //       returnfunc: (String s) {
+                                      //         EditDataTable11buffer.field14 = s;
+                                      //       }),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: Unit08_11,
+                                        onChangeinside: (newValue) {
+                                          Unit08_11 = newValue!;
+                                          EditDataTable11buffer.field14 =
+                                              newValue;
+
+                                          undercontroltap11 = true;
+                                          _onLoading(
+                                              contextinput,
+                                              contextinput
+                                                  .read<CallDropdowndata>()
+                                                  .add(calldropdownrequrst
+                                                      .set11_1));
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //       isContr: undercontroltap11,
+                                      //       fnContr: (input) {
+                                      //         undercontroltap11 = input;
+                                      //       },
+                                      //       sValue: EditDataTable11.field15,
+                                      //       returnfunc: (String s) {
+                                      //         EditDataTable11buffer.field15 = s;
+                                      //       }),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: Unit09_11,
+                                        onChangeinside: (newValue) {
+                                          Unit09_11 = newValue!;
+                                          EditDataTable11buffer.field15 =
+                                              newValue;
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      // Container(
+                                      //   width: 300,
+                                      //   height: 40,
+                                      //   // color: Colors.red,
+                                      //   child: ComInputText(
+                                      //       isContr: undercontroltap11,
+                                      //       fnContr: (input) {
+                                      //         undercontroltap11 = input;
+                                      //       },
+                                      //       sValue: EditDataTable11.field16,
+                                      //       returnfunc: (String s) {
+                                      //         EditDataTable11buffer.field16 = s;
+                                      //       }),
+                                      // ),
+                                      AdvanceDropDown(
+                                        width: 400,
+                                        height: 40,
+                                        value: Unit10_11,
+                                        onChangeinside: (newValue) {
+                                          Unit10_11 = newValue!;
+                                          EditDataTable11buffer.field16 =
+                                              newValue;
+                                          BlocProvider.of<BlocPageRebuild>(
+                                                  contextinput)
+                                              .rebuildPage();
+                                        },
+                                        listdropdown: _list1,
+                                      ),
+
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        width: 300,
+                                        height: 40,
+                                        // color: Colors.red,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        width: 300,
+                                        height: 40,
+                                        // color: Colors.red,
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        width: 300,
+                                        height: 40,
+                                        // color: Colors.red,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  width: 460,
+                                  height: 40,
+                                  // color: Colors.blue,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ComBtnBlack(
+                                          sLabel: "Save",
+                                          func: () {
+                                            // EditDataTable11buffer = EditDataTable11;
+                                            contextinput
+                                                .read<FetchDataTable11Bloc>()
+                                                .add(DataSequncePage11
+                                                    .update); //<------------------
+                                          },
+                                          nWidth: 134),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      ComBtnBlackBorder(
+                                          sLabel: "Cancle",
+                                          cBg: Colors.red,
+                                          func: () {
+                                            undercontroltap11 = true;
+                                            EditDataTable11 =
+                                                MainStrucTableTap11(
+                                              number: "",
+                                              field01: "",
+                                              field02: "",
+                                              field03: "",
+                                              field04: "",
+                                              field05: "",
+                                              field06: "",
+                                              field07: "",
+                                              field08: "",
+                                              field09: "",
+                                              field10: "",
+                                              field11: "",
+                                              field12: "",
+                                              field13: "",
+                                              field14: "",
+                                              field15: "",
+                                              field16: "",
+                                              field17: "",
+                                            );
+                                            BlocProvider.of<BlocPageRebuild>(
+                                                    contextinput)
+                                                .rebuildPage();
+                                          },
+                                          nWidth: 134),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      ComBtnBlackBorder(
+                                          sLabel: "New",
+                                          func: () {
+                                            contextinput
+                                                .read<FetchDataTable11Bloc>()
+                                                .add(DataSequncePage11.insert);
+                                          },
+                                          nWidth: 134),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              )),
+        ),
+      );
+    },
+  );
+}
+
+class TxtStylePOP extends TextStyle {
+  final Color color;
+  final FontWeight fontWeight;
+  final double fontSize;
+  final String fontFamily = 'Mitr';
+  final FontStyle fontStyle = FontStyle.normal;
+
+  const TxtStylePOP(
+      {this.fontSize = 12,
+      this.color = Colors.black,
+      this.fontWeight = FontWeight.normal})
+      : super();
+}
+
+void _onLoading(BuildContext contextin, void newValue) {
+  showDialog(
+    context: contextin,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      newValue;
+      return Container(
+        // color: Colors.red,
+
+        child: Dialog(
+          child: Container(
+              height: 75,
+              child: new Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(width: 30),
+                  new CircularProgressIndicator(),
+                  SizedBox(width: 20),
+                  new Text("Loading"),
+                ],
+              )),
+        ),
+      );
+    },
+  );
+
+  Timer(Duration(seconds: 1), () {
+    BlocProvider.of<BlocPageRebuild>(contextin).rebuildPage();
+    Navigator.pop(contextin);
+  });
 }

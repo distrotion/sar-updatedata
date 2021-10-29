@@ -153,9 +153,9 @@ class _DataListTable4State extends State<DataListTable4> {
     //------------------------------------------------------------------------------------------------
 
     void _tapView(MainStrucTableTap4 s) {
-      ListTable4Status = 1;
       //click all
       // print("123");
+      ListTable4Status = 1;
       EditDataTable4 = s;
       EditDataTable4buffer = s;
       undercontroltap4 = true;
@@ -168,7 +168,7 @@ class _DataListTable4State extends State<DataListTable4> {
       DMG = s.field11;
 
       context.read<FetchDataTable4Bloc>().add(DataSequncePage4.select);
-      ConsoleBox(s, context, widget.dropdowndata);
+      _ConsoleBox(s, context, widget.dropdowndata);
     }
 
     void _CallYNPopup(
@@ -229,7 +229,7 @@ class _DataListTable4State extends State<DataListTable4> {
       DMG = s.field11;
 
       context.read<FetchDataTable4Bloc>().add(DataSequncePage4.select);
-      ConsoleBox(s, context, widget.dropdowndata);
+      _ConsoleBox(s, context, widget.dropdowndata);
       // BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
     }
 
@@ -317,7 +317,7 @@ class _DataListTable4State extends State<DataListTable4> {
                       JP = '';
                       DMG = '';
                       BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
-                      ConsoleBox(Zerodata, context, widget.dropdowndata);
+                      _ConsoleBox(Zerodata, context, widget.dropdowndata);
                     },
                     nWidth: 134),
               ),
@@ -582,7 +582,7 @@ DataCell _getDataCell_Icon(
   );
 }
 
-void ConsoleBox(MainStrucTableTap4 input, BuildContext contextinput,
+void _ConsoleBox(MainStrucTableTap4 input, BuildContext contextinput,
     DropDownData dropdowndata) {
   showDialog(
     context: contextinput,
@@ -681,7 +681,6 @@ void ConsoleBox(MainStrucTableTap4 input, BuildContext contextinput,
                                   value: CustFull,
                                   onChangeinside: (newValue) {
                                     CustFull = newValue!;
-
                                     EditDataTable4buffer.field02 = newValue;
                                     undercontroltap4 = true;
                                     _onLoading(
@@ -892,7 +891,7 @@ void ConsoleBox(MainStrucTableTap4 input, BuildContext contextinput,
                               children: [
                                 if (ListTable4Status == 1)
                                   ComBtnBlack(
-                                      sLabel: "Save",
+                                      sLabel: "Update",
                                       func: () {
                                         // EditDataTable4buffer = EditDataTable4;
                                         contextinput
@@ -901,19 +900,20 @@ void ConsoleBox(MainStrucTableTap4 input, BuildContext contextinput,
                                                 .update); //<------------------
                                       },
                                       nWidth: 134),
-                                ComBtnBlackBorder(
-                                    sLabel: "New",
-                                    func: () {
-                                      contextinput
-                                          .read<FetchDataTable4Bloc>()
-                                          .add(DataSequncePage4.insert);
-                                    },
-                                    nWidth: 134),
+                                if (ListTable4Status == 0)
+                                  ComBtnBlackBorder(
+                                      sLabel: "Insert",
+                                      func: () {
+                                        contextinput
+                                            .read<FetchDataTable4Bloc>()
+                                            .add(DataSequncePage4.insert);
+                                      },
+                                      nWidth: 134),
                                 SizedBox(
                                   width: 10,
                                 ),
                                 ComBtnBlackBorder(
-                                    sLabel: "Cancle",
+                                    sLabel: "Clear",
                                     cBg: Colors.red,
                                     func: () {
                                       undercontroltap4 = true;

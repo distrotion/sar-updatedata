@@ -60,6 +60,8 @@ class _TableStrucBuffer2 extends StatelessWidget {
   }
 }
 
+String GroupType6 = '';
+
 class _TableStrucBufferCalldrop extends StatelessWidget {
   _TableStrucBufferCalldrop(
       {Key? key, required this.State, required this.datadropdown})
@@ -96,6 +98,7 @@ class __TableStrucMain6State extends State<_TableStrucMain6> {
   void initState() {
     super.initState();
     context.read<FetchDataTable6Bloc>().add(DataSequncePage6.select);
+    context.read<Dropdowndata>().add(dropdownrequrst.set06);
   }
 
   @override
@@ -107,6 +110,8 @@ class __TableStrucMain6State extends State<_TableStrucMain6> {
         TableTap6nPage = n;
       });
     }
+
+    DropDownData _datadropdown = widget.datadropdown;
 
     return ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(
@@ -136,8 +141,7 @@ class __TableStrucMain6State extends State<_TableStrucMain6> {
                     ],
                   ),
                   child: DataListTable6(
-                    datainput: _datainput,
-                  ),
+                      datainput: _datainput, dropdowndata: _datadropdown),
                 ),
                 _BottomPageNum(
                   func: tapChangeTablePage,
@@ -146,201 +150,201 @@ class __TableStrucMain6State extends State<_TableStrucMain6> {
               ],
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: CustomTheme.colorGreyBg,
-              borderRadius: BorderRadius.all(Radius.circular(24)),
-              boxShadow: [
-                BoxShadow(
-                    color: CustomTheme.colorShadowBgStrong,
-                    offset: Offset(0, 0),
-                    blurRadius: 10,
-                    spreadRadius: 0)
-              ],
-            ),
-            width: 500,
-            height: 380,
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Container(
-                    width: 460,
-                    height: 50,
-                    color: Colors.blue,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: 400,
-                  height: 40,
-                  // color: Colors.red,
-                  child: ComInputText(
-                    isContr: undercontroltap6,
-                    fnContr: (input) {
-                      undercontroltap6 = input;
-                    },
-                    sValue: EditDataTable6.number,
-                    returnfunc: () {},
-                    isEnabled: false,
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: 400,
-                  height: 40,
-                  // color: Colors.red,
-                  child: ComInputText(
-                      isContr: undercontroltap6,
-                      fnContr: (input) {
-                        undercontroltap6 = input;
-                      },
-                      sValue: EditDataTable6.field01,
-                      returnfunc: (String s) {
-                        EditDataTable6buffer.field01 = s;
-                      }),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: 400,
-                  height: 40,
-                  // color: Colors.red,
-                  child: ComInputText(
-                    isContr: undercontroltap6,
-                    fnContr: (input) {
-                      undercontroltap6 = input;
-                    },
-                    sValue: EditDataTable6.field02,
-                    returnfunc: (String s) {
-                      EditDataTable6buffer.field02 = s;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: 400,
-                  height: 40,
-                  // color: Colors.red,
-                  child: ComInputText(
-                    isContr: undercontroltap6,
-                    fnContr: (input) {
-                      undercontroltap6 = input;
-                    },
-                    sValue: EditDataTable6.field03,
-                    returnfunc: (String s) {
-                      EditDataTable6buffer.field03 = s;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: 400,
-                  height: 40,
-                  // color: Colors.red,
-                  child: ComInputText(
-                    isContr: undercontroltap6,
-                    fnContr: (input) {
-                      undercontroltap6 = input;
-                    },
-                    sValue: EditDataTable6.field04,
-                    returnfunc: (String s) {
-                      EditDataTable6buffer.field04 = s;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: 400,
-                  height: 40,
-                  // color: Colors.red,
-                  child: ComInputText(
-                    isContr: undercontroltap6,
-                    fnContr: (input) {
-                      undercontroltap6 = input;
-                    },
-                    sValue: EditDataTable6.field05,
-                    returnfunc: (String s) {
-                      EditDataTable6buffer.field05 = s;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    width: 460,
-                    height: 40,
-                    // color: Colors.blue,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ComBtnBlack(
-                            sLabel: "Save",
-                            func: () {
-                              // EditDataTable6buffer = EditDataTable6;
-                              context.read<FetchDataTable6Bloc>().add(
-                                  DataSequncePage6
-                                      .update); //<------------------
-                            },
-                            nWidth: 134),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        ComBtnBlackBorder(
-                            sLabel: "Cancle",
-                            cBg: Colors.red,
-                            func: () {
-                              undercontroltap6 = true;
-                              EditDataTable6 = new MainStrucTableTap6(
-                                number: "",
-                                field01: "",
-                                field02: "",
-                                field03: "",
-                                field04: "",
-                                field05: "",
-                                field06: "",
-                                field07: "",
-                                field08: "",
-                                field09: "",
-                                field10: "",
-                              );
-                              BlocProvider.of<BlocPageRebuild>(context)
-                                  .rebuildPage();
-                            },
-                            nWidth: 134),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        ComBtnBlackBorder(
-                            sLabel: "New",
-                            func: () {
-                              context
-                                  .read<FetchDataTable6Bloc>()
-                                  .add(DataSequncePage6.insert);
-                            },
-                            nWidth: 134),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          )
+          // Container(
+          //   decoration: BoxDecoration(
+          //     color: CustomTheme.colorGreyBg,
+          //     borderRadius: BorderRadius.all(Radius.circular(24)),
+          //     boxShadow: [
+          //       BoxShadow(
+          //           color: CustomTheme.colorShadowBgStrong,
+          //           offset: Offset(0, 0),
+          //           blurRadius: 10,
+          //           spreadRadius: 0)
+          //     ],
+          //   ),
+          //   width: 500,
+          //   height: 380,
+          //   child: Column(
+          //     // mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //       Align(
+          //         alignment: Alignment.topCenter,
+          //         child: Container(
+          //           width: 460,
+          //           height: 50,
+          //           color: Colors.blue,
+          //         ),
+          //       ),
+          //       SizedBox(
+          //         height: 10,
+          //       ),
+          //       Container(
+          //         width: 400,
+          //         height: 40,
+          //         // color: Colors.red,
+          //         child: ComInputText(
+          //           isContr: undercontroltap6,
+          //           fnContr: (input) {
+          //             undercontroltap6 = input;
+          //           },
+          //           sValue: EditDataTable6.number,
+          //           returnfunc: () {},
+          //           isEnabled: false,
+          //         ),
+          //       ),
+          //       SizedBox(
+          //         height: 5,
+          //       ),
+          //       Container(
+          //         width: 400,
+          //         height: 40,
+          //         // color: Colors.red,
+          //         child: ComInputText(
+          //             isContr: undercontroltap6,
+          //             fnContr: (input) {
+          //               undercontroltap6 = input;
+          //             },
+          //             sValue: EditDataTable6.field01,
+          //             returnfunc: (String s) {
+          //               EditDataTable6buffer.field01 = s;
+          //             }),
+          //       ),
+          //       SizedBox(
+          //         height: 5,
+          //       ),
+          //       Container(
+          //         width: 400,
+          //         height: 40,
+          //         // color: Colors.red,
+          //         child: ComInputText(
+          //           isContr: undercontroltap6,
+          //           fnContr: (input) {
+          //             undercontroltap6 = input;
+          //           },
+          //           sValue: EditDataTable6.field02,
+          //           returnfunc: (String s) {
+          //             EditDataTable6buffer.field02 = s;
+          //           },
+          //         ),
+          //       ),
+          //       SizedBox(
+          //         height: 5,
+          //       ),
+          //       Container(
+          //         width: 400,
+          //         height: 40,
+          //         // color: Colors.red,
+          //         child: ComInputText(
+          //           isContr: undercontroltap6,
+          //           fnContr: (input) {
+          //             undercontroltap6 = input;
+          //           },
+          //           sValue: EditDataTable6.field03,
+          //           returnfunc: (String s) {
+          //             EditDataTable6buffer.field03 = s;
+          //           },
+          //         ),
+          //       ),
+          //       SizedBox(
+          //         height: 5,
+          //       ),
+          //       Container(
+          //         width: 400,
+          //         height: 40,
+          //         // color: Colors.red,
+          //         child: ComInputText(
+          //           isContr: undercontroltap6,
+          //           fnContr: (input) {
+          //             undercontroltap6 = input;
+          //           },
+          //           sValue: EditDataTable6.field04,
+          //           returnfunc: (String s) {
+          //             EditDataTable6buffer.field04 = s;
+          //           },
+          //         ),
+          //       ),
+          //       SizedBox(
+          //         height: 5,
+          //       ),
+          //       Container(
+          //         width: 400,
+          //         height: 40,
+          //         // color: Colors.red,
+          //         child: ComInputText(
+          //           isContr: undercontroltap6,
+          //           fnContr: (input) {
+          //             undercontroltap6 = input;
+          //           },
+          //           sValue: EditDataTable6.field05,
+          //           returnfunc: (String s) {
+          //             EditDataTable6buffer.field05 = s;
+          //           },
+          //         ),
+          //       ),
+          //       SizedBox(
+          //         height: 10,
+          //       ),
+          //       Align(
+          //         alignment: Alignment.bottomCenter,
+          //         child: Container(
+          //           width: 460,
+          //           height: 40,
+          //           // color: Colors.blue,
+          //           child: Row(
+          //             mainAxisAlignment: MainAxisAlignment.center,
+          //             children: [
+          //               ComBtnBlack(
+          //                   sLabel: "Save",
+          //                   func: () {
+          //                     // EditDataTable6buffer = EditDataTable6;
+          //                     context.read<FetchDataTable6Bloc>().add(
+          //                         DataSequncePage6
+          //                             .update); //<------------------
+          //                   },
+          //                   nWidth: 134),
+          //               SizedBox(
+          //                 width: 10,
+          //               ),
+          //               ComBtnBlackBorder(
+          //                   sLabel: "Cancle",
+          //                   cBg: Colors.red,
+          //                   func: () {
+          //                     undercontroltap6 = true;
+          //                     EditDataTable6 = new MainStrucTableTap6(
+          //                       number: "",
+          //                       field01: "",
+          //                       field02: "",
+          //                       field03: "",
+          //                       field04: "",
+          //                       field05: "",
+          //                       field06: "",
+          //                       field07: "",
+          //                       field08: "",
+          //                       field09: "",
+          //                       field10: "",
+          //                     );
+          //                     BlocProvider.of<BlocPageRebuild>(context)
+          //                         .rebuildPage();
+          //                   },
+          //                   nWidth: 134),
+          //               SizedBox(
+          //                 width: 10,
+          //               ),
+          //               ComBtnBlackBorder(
+          //                   sLabel: "New",
+          //                   func: () {
+          //                     context
+          //                         .read<FetchDataTable6Bloc>()
+          //                         .add(DataSequncePage6.insert);
+          //                   },
+          //                   nWidth: 134),
+          //             ],
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // )
         ],
       )),
     );
