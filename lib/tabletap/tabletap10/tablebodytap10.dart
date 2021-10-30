@@ -109,6 +109,8 @@ class _DataListTable10State extends State<DataListTable10> {
       ListTable10Status = 1;
       EditDataTable10 = s;
       EditDataTable10buffer = s;
+      undercontroltap10 = true;
+      GroupName10 = s.field02;
 
       context.read<FetchDataTable10Bloc>().add(DataSequncePage10.select);
       _ConsoleBox(s, context, widget.dropdowndata);
@@ -496,7 +498,7 @@ void _ConsoleBox(MainStrucTableTap10 input, BuildContext contextinput,
             ],
           ),
           width: 500,
-          height: 420,
+          height: 380,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -505,7 +507,7 @@ void _ConsoleBox(MainStrucTableTap10 input, BuildContext contextinput,
                 child: Container(
                   width: 460,
                   height: 20,
-                  color: Colors.blue,
+                  // color: Colors.blue,
                 ),
               ),
               SizedBox(
@@ -539,6 +541,7 @@ void _ConsoleBox(MainStrucTableTap10 input, BuildContext contextinput,
                 height: 40,
                 // color: Colors.red,
                 child: ComInputText(
+                    isEnabled: false,
                     isContr: undercontroltap10,
                     fnContr: (input) {
                       undercontroltap10 = input;
@@ -663,18 +666,19 @@ void _ConsoleBox(MainStrucTableTap10 input, BuildContext contextinput,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ComBtnBlack(
-                          sLabel: "Save",
+                          sLabel: "Update",
                           func: () {
                             // EditDataTable10buffer = EditDataTable10;
                             contextinput.read<FetchDataTable10Bloc>().add(
                                 DataSequncePage10.update); //<------------------
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 134),
                       SizedBox(
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "Cancle",
+                          sLabel: "Clear",
                           cBg: Colors.red,
                           func: () {
                             undercontroltap10 = true;
@@ -699,11 +703,12 @@ void _ConsoleBox(MainStrucTableTap10 input, BuildContext contextinput,
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "New",
+                          sLabel: "Insert",
                           func: () {
                             contextinput
                                 .read<FetchDataTable10Bloc>()
                                 .add(DataSequncePage10.insert);
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 134),
                     ],

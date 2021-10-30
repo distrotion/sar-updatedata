@@ -205,6 +205,18 @@ class _DataListTable11State extends State<DataListTable11> {
       ListTable11Status = 1;
       EditDataTable11 = s;
       EditDataTable11buffer = s;
+      undercontroltap11 = true;
+      InstrumentName11 = s.field02;
+      Unit01_11 = s.field07;
+      Unit02_11 = s.field08;
+      Unit03_11 = s.field09;
+      Unit04_11 = s.field10;
+      Unit05_11 = s.field11;
+      Unit06_11 = s.field12;
+      Unit07_11 = s.field13;
+      Unit08_11 = s.field14;
+      Unit09_11 = s.field15;
+      Unit10_11 = s.field16;
 
       context.read<FetchDataTable11Bloc>().add(DataSequncePage11.select);
       _ConsoleBox(s, context, widget.dropdowndata);
@@ -725,6 +737,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                           height: 40,
                           // color: Colors.red,
                           child: ComInputText(
+                              isEnabled: false,
                               isContr: undercontroltap11,
                               fnContr: (input) {
                                 undercontroltap11 = input;
@@ -876,7 +889,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
                           },
-                          listdropdown: _list1,
+                          listdropdown: _list2,
                         ),
                         SizedBox(
                           width: 300,
@@ -895,7 +908,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
                           },
-                          listdropdown: _list1,
+                          listdropdown: _list2,
                         ),
                         SizedBox(
                           width: 300,
@@ -914,7 +927,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
                           },
-                          listdropdown: _list1,
+                          listdropdown: _list2,
                         ),
                         SizedBox(
                           width: 300,
@@ -933,7 +946,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
                           },
-                          listdropdown: _list1,
+                          listdropdown: _list2,
                         ),
                         SizedBox(
                           width: 300,
@@ -952,7 +965,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
                           },
-                          listdropdown: _list1,
+                          listdropdown: _list2,
                         ),
                         SizedBox(
                           width: 300,
@@ -971,7 +984,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
                           },
-                          listdropdown: _list1,
+                          listdropdown: _list2,
                         ),
                         SizedBox(
                           width: 300,
@@ -990,7 +1003,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
                           },
-                          listdropdown: _list1,
+                          listdropdown: _list2,
                         ),
                       ],
                     ),
@@ -1022,7 +1035,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
                           },
-                          listdropdown: _list1,
+                          listdropdown: _list2,
                         ),
                         SizedBox(
                           width: 300,
@@ -1041,7 +1054,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
                           },
-                          listdropdown: _list1,
+                          listdropdown: _list2,
                         ),
                         SizedBox(
                           width: 300,
@@ -1060,7 +1073,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
                           },
-                          listdropdown: _list1,
+                          listdropdown: _list2,
                         ),
                         SizedBox(
                           height: 15,
@@ -1111,7 +1124,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ComBtnBlack(
-                            sLabel: "Save",
+                            sLabel: "Insert",
                             func: () {
                               // EditDataTable11buffer = EditDataTable11;
                               contextinput.read<FetchDataTable11Bloc>().add(
@@ -1123,7 +1136,7 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                           width: 10,
                         ),
                         ComBtnBlackBorder(
-                            sLabel: "Cancle",
+                            sLabel: "Clear",
                             cBg: Colors.red,
                             func: () {
                               undercontroltap11 = true;
@@ -1155,11 +1168,12 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                           width: 10,
                         ),
                         ComBtnBlackBorder(
-                            sLabel: "New",
+                            sLabel: "Insert",
                             func: () {
                               contextinput
                                   .read<FetchDataTable11Bloc>()
                                   .add(DataSequncePage11.insert);
+                              Navigator.pop(contextinput);
                             },
                             nWidth: 134),
                       ],

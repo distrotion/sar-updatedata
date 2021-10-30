@@ -673,19 +673,20 @@ void _ConsoleBox(MainStrucTableTap1 input, BuildContext contextinput,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ComBtnBlack(
-                          sLabel: "Save",
+                          sLabel: "Update",
                           func: () {
                             // print(EditDataTable1buffer.field04);
                             // EditDataTable1buffer = EditDataTable1;
                             contextinput.read<FetchDataTable1Bloc>().add(
                                 DataSequncePage1.update); //<------------------
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 80),
                       SizedBox(
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "Cancle",
+                          sLabel: "Clear",
                           cBg: Colors.red,
                           func: () {
                             undercontroltap1 = true;
@@ -721,11 +722,12 @@ void _ConsoleBox(MainStrucTableTap1 input, BuildContext contextinput,
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "New",
+                          sLabel: "Insert",
                           func: () {
                             contextinput
                                 .read<FetchDataTable1Bloc>()
                                 .add(DataSequncePage1.insert);
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 80),
                     ],

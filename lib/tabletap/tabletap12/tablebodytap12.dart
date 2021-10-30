@@ -145,7 +145,11 @@ class _DataListTable12State extends State<DataListTable12> {
       ListTable12Status = 1;
       EditDataTable12 = s;
       EditDataTable12buffer = s;
-
+      undercontroltap12 = true;
+      GroupName12 = s.field02;
+      SampleTypeName12 = s.field04;
+      InsrumentName12 = s.field06;
+      ItemName12 = s.field08;
       context.read<FetchDataTable12Bloc>().add(DataSequncePage12.select);
       _ConsoleBox(s, context, widget.dropdowndata);
     }
@@ -611,6 +615,7 @@ void _ConsoleBox(MainStrucTableTap12 input, BuildContext contextinput,
                           height: 40,
                           // color: Colors.red,
                           child: ComInputText(
+                              isEnabled: false,
                               isContr: undercontroltap12,
                               fnContr: (input) {
                                 undercontroltap12 = input;
@@ -672,6 +677,7 @@ void _ConsoleBox(MainStrucTableTap12 input, BuildContext contextinput,
                           height: 40,
                           // color: Colors.red,
                           child: ComInputText(
+                            isEnabled: false,
                             isContr: undercontroltap12,
                             fnContr: (input) {
                               undercontroltap12 = input;
@@ -746,6 +752,7 @@ void _ConsoleBox(MainStrucTableTap12 input, BuildContext contextinput,
                           height: 40,
                           // color: Colors.red,
                           child: ComInputText(
+                            isEnabled: false,
                             isContr: undercontroltap12,
                             fnContr: (input) {
                               undercontroltap12 = input;
@@ -808,6 +815,7 @@ void _ConsoleBox(MainStrucTableTap12 input, BuildContext contextinput,
                           height: 40,
                           // color: Colors.red,
                           child: ComInputText(
+                            isEnabled: false,
                             isContr: undercontroltap12,
                             fnContr: (input) {
                               undercontroltap12 = input;
@@ -878,19 +886,20 @@ void _ConsoleBox(MainStrucTableTap12 input, BuildContext contextinput,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ComBtnBlack(
-                            sLabel: "Save",
+                            sLabel: "Update",
                             func: () {
                               // EditDataTable12buffer = EditDataTable12;
                               contextinput.read<FetchDataTable12Bloc>().add(
                                   DataSequncePage12
                                       .update); //<------------------
+                              Navigator.pop(contextinput);
                             },
                             nWidth: 134),
                         SizedBox(
                           width: 10,
                         ),
                         ComBtnBlackBorder(
-                            sLabel: "Cancle",
+                            sLabel: "Clear",
                             cBg: Colors.red,
                             func: () {
                               undercontroltap12 = true;
@@ -915,11 +924,12 @@ void _ConsoleBox(MainStrucTableTap12 input, BuildContext contextinput,
                           width: 10,
                         ),
                         ComBtnBlackBorder(
-                            sLabel: "New",
+                            sLabel: "Insert",
                             func: () {
                               contextinput
                                   .read<FetchDataTable12Bloc>()
                                   .add(DataSequncePage12.insert);
+                              Navigator.pop(contextinput);
                             },
                             nWidth: 134),
                       ],

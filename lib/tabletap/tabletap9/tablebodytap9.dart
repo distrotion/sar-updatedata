@@ -486,7 +486,7 @@ void _ConsoleBox(MainStrucTableTap9 input, BuildContext contextinput,
             ],
           ),
           width: 500,
-          height: 330,
+          height: 280,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -495,7 +495,7 @@ void _ConsoleBox(MainStrucTableTap9 input, BuildContext contextinput,
                 child: Container(
                   width: 460,
                   height: 20,
-                  color: Colors.blue,
+                  // color: Colors.blue,
                 ),
               ),
               SizedBox(
@@ -613,18 +613,19 @@ void _ConsoleBox(MainStrucTableTap9 input, BuildContext contextinput,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ComBtnBlack(
-                          sLabel: "Save",
+                          sLabel: "Update",
                           func: () {
                             // EditDataTable9buffer = EditDataTable9;
                             contextinput.read<FetchDataTable9Bloc>().add(
                                 DataSequncePage9.update); //<------------------
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 134),
                       SizedBox(
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "Cancle",
+                          sLabel: "Clear",
                           cBg: Colors.red,
                           func: () {
                             undercontroltap9 = true;
@@ -648,11 +649,12 @@ void _ConsoleBox(MainStrucTableTap9 input, BuildContext contextinput,
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "New",
+                          sLabel: "Insert",
                           func: () {
                             contextinput
                                 .read<FetchDataTable9Bloc>()
                                 .add(DataSequncePage9.insert);
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 134),
                     ],

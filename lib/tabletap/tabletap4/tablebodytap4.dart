@@ -613,7 +613,7 @@ void _ConsoleBox(MainStrucTableTap4 input, BuildContext contextinput,
           width: 1000,
           height: 500,
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 children: [
@@ -923,25 +923,15 @@ void _ConsoleBox(MainStrucTableTap4 input, BuildContext contextinput,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (ListTable4Status == 1)
-                        ComBtnBlack(
-                            sLabel: "Update",
-                            func: () {
-                              // EditDataTable4buffer = EditDataTable4;
-                              contextinput.read<FetchDataTable4Bloc>().add(
-                                  DataSequncePage4
-                                      .update); //<------------------
-                            },
-                            nWidth: 134),
-                      if (ListTable4Status == 0)
-                        ComBtnBlackBorder(
-                            sLabel: "Insert",
-                            func: () {
-                              contextinput
-                                  .read<FetchDataTable4Bloc>()
-                                  .add(DataSequncePage4.insert);
-                            },
-                            nWidth: 134),
+                      ComBtnBlack(
+                          sLabel: "Update",
+                          func: () {
+                            // EditDataTable4buffer = EditDataTable4;
+                            contextinput.read<FetchDataTable4Bloc>().add(
+                                DataSequncePage4.update); //<------------------
+                            Navigator.pop(contextinput);
+                          },
+                          nWidth: 134),
                       SizedBox(
                         width: 10,
                       ),
@@ -967,6 +957,18 @@ void _ConsoleBox(MainStrucTableTap4 input, BuildContext contextinput,
                             );
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
+                          },
+                          nWidth: 134),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      ComBtnBlackBorder(
+                          sLabel: "Insert",
+                          func: () {
+                            contextinput
+                                .read<FetchDataTable4Bloc>()
+                                .add(DataSequncePage4.insert);
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 134),
                     ],

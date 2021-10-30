@@ -125,6 +125,9 @@ class _DataListTable7State extends State<DataListTable7> {
       ListTable7Status = 1;
       EditDataTable7 = s;
       EditDataTable7buffer = s;
+      undercontroltap7 = true;
+      GroupName7 = s.field02;
+      SampleTypeName7 = s.field04;
 
       context.read<FetchDataTable7Bloc>().add(DataSequncePage7.select);
       _ConsoleBox(s, context, widget.dropdowndata);
@@ -526,7 +529,7 @@ void _ConsoleBox(MainStrucTableTap7 input, BuildContext contextinput,
             ],
           ),
           width: 450,
-          height: 520,
+          height: 480,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -535,7 +538,7 @@ void _ConsoleBox(MainStrucTableTap7 input, BuildContext contextinput,
                 child: Container(
                   width: 400,
                   height: 20,
-                  color: Colors.blue,
+                  // color: Colors.blue,
                 ),
               ),
               SizedBox(
@@ -755,18 +758,19 @@ void _ConsoleBox(MainStrucTableTap7 input, BuildContext contextinput,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ComBtnBlack(
-                          sLabel: "Save",
+                          sLabel: "Update",
                           func: () {
                             // EditDataTable7buffer = EditDataTable7;
                             contextinput.read<FetchDataTable7Bloc>().add(
                                 DataSequncePage7.update); //<------------------
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 80),
                       SizedBox(
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "Cancle",
+                          sLabel: "Clear",
                           cBg: Colors.red,
                           func: () {
                             undercontroltap7 = true;
@@ -785,17 +789,19 @@ void _ConsoleBox(MainStrucTableTap7 input, BuildContext contextinput,
                             );
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 80),
                       SizedBox(
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "New",
+                          sLabel: "Insert",
                           func: () {
                             contextinput
                                 .read<FetchDataTable7Bloc>()
                                 .add(DataSequncePage7.insert);
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 80),
                     ],

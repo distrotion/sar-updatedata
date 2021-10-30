@@ -109,6 +109,8 @@ class _DataListTable6State extends State<DataListTable6> {
       ListTable6Status = 1;
       EditDataTable6 = s;
       EditDataTable6buffer = s;
+      undercontroltap6 = true;
+      GroupType6 = s.field02;
 
       context.read<FetchDataTable6Bloc>().add(DataSequncePage6.select);
       _ConsoleBox(s, context, widget.dropdowndata);
@@ -495,7 +497,7 @@ void _ConsoleBox(MainStrucTableTap6 input, BuildContext contextinput,
             ],
           ),
           width: 500,
-          height: 420,
+          height: 380,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -504,7 +506,7 @@ void _ConsoleBox(MainStrucTableTap6 input, BuildContext contextinput,
                 child: Container(
                   width: 460,
                   height: 20,
-                  color: Colors.blue,
+                  // color: Colors.blue,
                 ),
               ),
               SizedBox(
@@ -630,27 +632,27 @@ void _ConsoleBox(MainStrucTableTap6 input, BuildContext contextinput,
                   },
                 ),
               ),
-              SizedBox(
-                width: 400,
-                height: 15,
-                // child:
-                //     Align(alignment: Alignment.centerLeft, child: Text("test")),
-              ),
-              Container(
-                width: 400,
-                height: 40,
-                // color: Colors.red,
-                // child: ComInputText(
-                //   isContr: undercontroltap6,
-                //   fnContr: (input) {
-                //     undercontroltap6 = input;
-                //   },
-                //   sValue: EditDataTable6.field05,
-                //   returnfunc: (String s) {
-                //     EditDataTable6buffer.field05 = s;
-                //   },
-                // ),
-              ),
+              // SizedBox(
+              //   width: 400,
+              //   height: 15,
+              //   // child:
+              //   //     Align(alignment: Alignment.centerLeft, child: Text("test")),
+              // ),
+              // Container(
+              //   width: 400,
+              //   height: 40,
+              //   // color: Colors.red,
+              //   child: ComInputText(
+              //     isContr: undercontroltap6,
+              //     fnContr: (input) {
+              //       undercontroltap6 = input;
+              //     },
+              //     sValue: EditDataTable6.field05,
+              //     returnfunc: (String s) {
+              //       EditDataTable6buffer.field05 = s;
+              //     },
+              //   ),
+              // ),
               SizedBox(
                 height: 10,
               ),
@@ -664,18 +666,19 @@ void _ConsoleBox(MainStrucTableTap6 input, BuildContext contextinput,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ComBtnBlack(
-                          sLabel: "Save",
+                          sLabel: "Update",
                           func: () {
                             // EditDataTable6buffer = EditDataTable6;
                             contextinput.read<FetchDataTable6Bloc>().add(
                                 DataSequncePage6.update); //<------------------
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 134),
                       SizedBox(
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "Cancle",
+                          sLabel: "Clear",
                           cBg: Colors.red,
                           func: () {
                             undercontroltap6 = true;
@@ -700,11 +703,12 @@ void _ConsoleBox(MainStrucTableTap6 input, BuildContext contextinput,
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "New",
+                          sLabel: "Insert",
                           func: () {
                             contextinput
                                 .read<FetchDataTable6Bloc>()
                                 .add(DataSequncePage6.insert);
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 134),
                     ],

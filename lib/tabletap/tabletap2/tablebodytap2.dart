@@ -504,7 +504,7 @@ void _ConsoleBox(MainStrucTableTap2 input, BuildContext contextinput,
             ],
           ),
           width: 450,
-          height: 500,
+          height: 420,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -513,7 +513,7 @@ void _ConsoleBox(MainStrucTableTap2 input, BuildContext contextinput,
                 child: Container(
                   width: 400,
                   height: 20,
-                  color: Colors.blue,
+                  // color: Colors.blue,
                 ),
               ),
               SizedBox(
@@ -632,27 +632,27 @@ void _ConsoleBox(MainStrucTableTap2 input, BuildContext contextinput,
                 },
                 listdropdown: ['', 'CTS', 'MKT', 'PHO'],
               ),
-              SizedBox(
-                width: 400,
-                height: 15,
-                // child:
-                //     Align(alignment: Alignment.centerLeft, child: Text("test")),
-              ),
-              Container(
-                width: 400,
-                height: 40,
-                // color: Colors.red,
-                // child: ComInputText(
-                //   isContr: undercontroltap2,
-                //   fnContr: (input) {
-                //     undercontroltap2 = input;
-                //   },
-                //   sValue: EditDataTable2.field06,
-                //   returnfunc: (String s) {
-                //     EditDataTable2buffer.field06 = s;
-                //   },
-                // ),
-              ),
+              // SizedBox(
+              //   width: 400,
+              //   height: 15,
+              //   // child:
+              //   //     Align(alignment: Alignment.centerLeft, child: Text("test")),
+              // ),
+              // Container(
+              //   width: 400,
+              //   height: 40,
+              //   // color: Colors.red,
+              //   child: ComInputText(
+              //     isContr: undercontroltap2,
+              //     fnContr: (input) {
+              //       undercontroltap2 = input;
+              //     },
+              //     sValue: EditDataTable2.field06,
+              //     returnfunc: (String s) {
+              //       EditDataTable2buffer.field06 = s;
+              //     },
+              //   ),
+              // ),
               SizedBox(
                 height: 10,
               ),
@@ -666,34 +666,36 @@ void _ConsoleBox(MainStrucTableTap2 input, BuildContext contextinput,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ComBtnBlack(
-                          sLabel: "Save",
+                          sLabel: "Update",
                           func: () {
                             // print(EditDataTable2buffer.field04);
                             // EditDataTable2buffer = EditDataTable2;
                             contextinput.read<FetchDataTable2Bloc>().add(
                                 DataSequncePage2.update); //<------------------
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 80),
                       SizedBox(
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "Cancle",
+                          sLabel: "Clear",
                           cBg: Colors.red,
                           func: () {
                             undercontroltap2 = true;
                             EditDataTable2 = MainStrucTableTap2(
-                                number: "",
-                                field01: "",
-                                field02: "",
-                                field03: "",
-                                field04: "",
-                                field05: "",
-                                field06: "",
-                                field07: "",
-                                field08: "",
-                                field09: "",
-                                field10: "");
+                              number: "",
+                              field01: "",
+                              field02: "",
+                              field03: "",
+                              field04: "",
+                              field05: "",
+                              field06: "",
+                              field07: "",
+                              field08: "",
+                              field09: "",
+                              field10: "",
+                            );
 
                             BlocProvider.of<BlocPageRebuild>(contextinput)
                                 .rebuildPage();
@@ -703,11 +705,12 @@ void _ConsoleBox(MainStrucTableTap2 input, BuildContext contextinput,
                         width: 10,
                       ),
                       ComBtnBlackBorder(
-                          sLabel: "New",
+                          sLabel: "Insert",
                           func: () {
                             contextinput
                                 .read<FetchDataTable2Bloc>()
                                 .add(DataSequncePage2.insert);
+                            Navigator.pop(contextinput);
                           },
                           nWidth: 80),
                     ],
