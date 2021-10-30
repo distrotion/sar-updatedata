@@ -113,6 +113,9 @@ class _DataListTable2State extends State<DataListTable2> {
       ListTable2Status = 1;
       EditDataTable2 = s;
       EditDataTable2buffer = s;
+      undercontroltap2 = true;
+      Branch = s.field04;
+      Code = s.field05;
 
       context.read<FetchDataTable2Bloc>().add(DataSequncePage2.select);
       _ConsoleBox(s, context, zeroDropDownData);
