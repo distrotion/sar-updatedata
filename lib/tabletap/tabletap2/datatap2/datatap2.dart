@@ -3,7 +3,7 @@ import '../modelintable.dart';
 int TableTap2nPage = 1;
 bool undercontroltap2 = false;
 
-final int nTableCellPerEachPageTable2 = 6;
+final int nTableCellPerEachPageTable2 = 5;
 final int nNumToShowArrowAtPageTable2 = 5; //show < > when more than 5 page
 
 MainStrucTableTap2 EditDataTable2 = MainStrucTableTap2(

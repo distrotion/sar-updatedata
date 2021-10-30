@@ -4,7 +4,7 @@ int TableTap3nPage = 1;
 bool undercontroltap3 = false;
 
 final int nTableCellPerEachPageTable3 = 5;
-final int nNumToShowArrowAtPageTable3 = 4; //show < > when more than 5 page
+final int nNumToShowArrowAtPageTable3 = 5; //show < > when more than 5 page
 
 MainStrucTableTap3 EditDataTable3 = MainStrucTableTap3(
   number: "",
