@@ -60,9 +60,6 @@ class _TableStrucBuffer2 extends StatelessWidget {
   }
 }
 
-String GroupName7 = '';
-String SampleTypeName7 = '';
-
 class _TableStrucBufferCalldrop extends StatelessWidget {
   _TableStrucBufferCalldrop(
       {Key? key, required this.State, required this.datadropdown})

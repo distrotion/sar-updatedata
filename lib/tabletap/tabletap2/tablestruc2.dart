@@ -43,10 +43,6 @@ class _TableStrucBuffer extends StatelessWidget {
   }
 }
 
-int dropse = 1;
-String Branch = '';
-String Code = '';
-
 class _TableStrucMain2 extends StatefulWidget {
   const _TableStrucMain2({Key? key, this.datainput}) : super(key: key);
 

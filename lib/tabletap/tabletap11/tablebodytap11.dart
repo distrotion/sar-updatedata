@@ -1124,12 +1124,13 @@ void _ConsoleBox(MainStrucTableTap11 input, BuildContext contextinput,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ComBtnBlack(
-                            sLabel: "Insert",
+                            sLabel: "Update",
                             func: () {
                               // EditDataTable11buffer = EditDataTable11;
                               contextinput.read<FetchDataTable11Bloc>().add(
                                   DataSequncePage11
                                       .update); //<------------------
+                              Navigator.pop(contextinput);
                             },
                             nWidth: 134),
                         SizedBox(

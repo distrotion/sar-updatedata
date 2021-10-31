@@ -6,6 +6,14 @@ bool undercontroltap4 = false;
 final int nTableCellPerEachPageTable4 = 5;
 final int nNumToShowArrowAtPageTable4 = 5; //show < > when more than 5 page
 
+String CustFull = '';
+String FrequencyRequest = '';
+String Incharge = '';
+String SubLeader = '';
+String GL = '';
+String JP = '';
+String DMG = '';
+
 MainStrucTableTap4 EditDataTable4 = MainStrucTableTap4(
   number: "",
   field01: "",

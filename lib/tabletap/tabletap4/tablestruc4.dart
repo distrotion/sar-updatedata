@@ -87,14 +87,6 @@ class _TableStrucBufferCalldrop extends StatelessWidget {
   }
 }
 
-String CustFull = '';
-String FrequencyRequest = '';
-String Incharge = '';
-String SubLeader = '';
-String GL = '';
-String JP = '';
-String DMG = '';
-
 class _TableStrucMain4 extends StatefulWidget {
   _TableStrucMain4({Key? key, this.datainput, required this.datadropdown})
       : super(key: key);

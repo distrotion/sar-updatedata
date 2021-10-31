@@ -6,6 +6,19 @@ bool undercontroltap11 = false;
 final int nTableCellPerEachPageTable11 = 5;
 final int nNumToShowArrowAtPageTable11 = 5; //show < > when more than 5 page
 
+String InstrumentName11 = '';
+
+String Unit01_11 = '';
+String Unit02_11 = '';
+String Unit03_11 = '';
+String Unit04_11 = '';
+String Unit05_11 = '';
+String Unit06_11 = '';
+String Unit07_11 = '';
+String Unit08_11 = '';
+String Unit09_11 = '';
+String Unit10_11 = '';
+
 MainStrucTableTap11 EditDataTable11 = MainStrucTableTap11(
   number: "",
   field01: "",

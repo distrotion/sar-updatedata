@@ -81,11 +81,6 @@ class _TableStrucBufferCalldrop extends StatelessWidget {
   }
 }
 
-String GroupName12 = '';
-String SampleTypeName12 = '';
-String InsrumentName12 = '';
-String ItemName12 = '';
-
 class _TableStrucMain12 extends StatefulWidget {
   const _TableStrucMain12(
       {Key? key, this.datainput, required this.datadropdown})

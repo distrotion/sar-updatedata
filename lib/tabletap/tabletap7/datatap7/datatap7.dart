@@ -6,6 +6,9 @@ bool undercontroltap7 = false;
 final int nTableCellPerEachPageTable7 = 5;
 final int nNumToShowArrowAtPageTable7 = 5; //show < > when more than 5 page
 
+String GroupName7 = '';
+String SampleTypeName7 = '';
+
 MainStrucTableTap7 EditDataTable7 = MainStrucTableTap7(
   number: "",
   field01: "",

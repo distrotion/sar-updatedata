@@ -81,19 +81,6 @@ class _TableStrucBufferCalldrop extends StatelessWidget {
   }
 }
 
-String InstrumentName11 = '';
-
-String Unit01_11 = '';
-String Unit02_11 = '';
-String Unit03_11 = '';
-String Unit04_11 = '';
-String Unit05_11 = '';
-String Unit06_11 = '';
-String Unit07_11 = '';
-String Unit08_11 = '';
-String Unit09_11 = '';
-String Unit10_11 = '';
-
 class _TableStrucMain11 extends StatefulWidget {
   const _TableStrucMain11(
       {Key? key, this.datainput, required this.datadropdown})
